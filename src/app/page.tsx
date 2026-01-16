@@ -113,7 +113,7 @@ export default function Home() {
 
                 <div className="hero-overlay" />
 
-                <div className="hero-content container relative z-10 pt-32 lg:pt-48">
+                <div className="hero-content container relative z-10 pt-32 lg:pt-48 pb-12 lg:pb-20">
                     {/* Label */}
                     <p className="hero-label text-label text-[var(--noda-burgundy)] mb-6">
                         AI-Powered Energy Management

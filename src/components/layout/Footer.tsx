@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
     product: [
@@ -8,7 +9,6 @@ const footerLinks = {
     ],
     company: [
         { name: "About", href: "/innovation" },
-        { name: "Careers", href: "/resources" },
         { name: "News", href: "/resources" },
     ],
     resources: [
@@ -31,7 +31,15 @@ export function Footer() {
             <div className="container">
                 <div className="footer-grid">
                     <div>
-                        <div className="nav-logo" style={{ marginBottom: "16px" }}>Noda</div>
+                        <div className="nav-logo" style={{ marginBottom: "16px" }}>
+                            <Image
+                                src="/NODA-logo-2017-10-13.png"
+                                alt="NODA"
+                                width={100}
+                                height={26}
+                                className="h-7 w-auto"
+                            />
+                        </div>
                         <p className="text-small text-muted" style={{ maxWidth: "280px" }}>
                             Intelligent thermal energy systems for a sustainable future.
                         </p>
@@ -76,7 +84,7 @@ export function Footer() {
 
                 <div className="footer-bottom">
                     <span>© {year} NODA Intelligent Systems AB</span>
-                    <span>Malmö, Sweden</span>
+                    <span>Karlshamn, Sweden</span>
                 </div>
             </div>
         </footer>
