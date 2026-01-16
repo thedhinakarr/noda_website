@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,30 +12,22 @@ gsap.registerPlugin(ScrollTrigger);
  * Customer Segments / Success Stories
  */
 export function CustomerSegments() {
+    const { t } = useLanguage();
     const sectionRef = useRef<HTMLElement>(null);
 
-    const segments = [
-        {
-            title: "Energy Services",
-            quote: "Proven energy savings across our entire portfolio.",
-            gradient: "from-[var(--noda-burgundy)] to-[var(--noda-burgundy-dark)]",
-        },
-        {
-            title: "Utility Companies",
-            quote: "Real-time visibility and predictive insights.",
-            gradient: "from-[#1a1a2e] to-[#16213e]",
-        },
-        {
-            title: "Municipalities",
-            quote: "Sustainable infrastructure for communities.",
-            gradient: "from-[#1f1f1f] to-[#2d2d2d]",
-        },
-        {
-            title: "Real Estate",
-            quote: "Tenant comfort with reduced operational costs.",
-            gradient: "from-[#2d3436] to-[#000000]", // Fixed dark gradient
-        },
+    const translatedSegments = t("customerSegments.items") as any as Array<{ title: string, quote: string }>;
+
+    const gradients = [
+        "from-[var(--noda-burgundy)] to-[var(--noda-burgundy-dark)]",
+        "from-[#1a1a2e] to-[#16213e]",
+        "from-[#1f1f1f] to-[#2d2d2d]",
+        "from-[#2d3436] to-[#000000]"
     ];
+
+    const segments = Array.isArray(translatedSegments) ? translatedSegments.map((segment, i) => ({
+        ...segment,
+        gradient: gradients[i] || gradients[0]
+    })) : [];
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -78,19 +71,19 @@ export function CustomerSegments() {
         }, sectionRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [translatedSegments]);
 
     return (
         <section ref={sectionRef} id="success" className="py-24 bg-[var(--noda-black)]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 {/* Header */}
                 <div className="segments-header text-center mb-12">
-                    <p className="text-label text-[var(--noda-burgundy)] mb-3">Success Stories</p>
+                    <p className="text-label text-[var(--noda-burgundy)] mb-3">{t("customerSegments.label")}</p>
                     <h2 className="text-h1 text-[var(--noda-white)] mb-4">
-                        Trusted Across Industries
+                        {t("customerSegments.title")}
                     </h2>
                     <p className="text-body-lg text-[var(--noda-gray-300)] max-w-xl mx-auto">
-                        See how leading organizations leverage NODA to transform their thermal operations.
+                        {t("customerSegments.desc")}
                     </p>
                 </div>
 

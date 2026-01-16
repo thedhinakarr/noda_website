@@ -1,30 +1,32 @@
 import Link from "next/link";
 import Image from "next/image";
-
-const footerLinks = {
-    product: [
-        { name: "CoPilot", href: "/product" },
-        { name: "Platform", href: "/product" },
-        { name: "Integrations", href: "/product" },
-    ],
-    company: [
-        { name: "About", href: "/innovation" },
-        { name: "News", href: "/resources" },
-    ],
-    resources: [
-        { name: "Case Studies", href: "/success-stories" },
-        { name: "Documentation", href: "/resources" },
-        { name: "Support", href: "/resources" },
-    ],
-    legal: [
-        { name: "Privacy", href: "#" },
-        { name: "Terms", href: "#" },
-        { name: "Cookies", href: "#" },
-    ],
-};
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Footer() {
+    const { t } = useLanguage();
     const year = new Date().getFullYear();
+
+    const footerLinks = {
+        product: [
+            { name: t("footer.links.coPilot"), href: "/product" },
+            { name: t("footer.links.platform"), href: "/product" },
+            { name: t("footer.links.integrations"), href: "/product" },
+        ],
+        company: [
+            { name: t("footer.links.about"), href: "/innovation" },
+            { name: t("footer.links.news"), href: "/resources" },
+        ],
+        resources: [
+            { name: t("footer.links.caseStudies"), href: "/success-stories" },
+            { name: t("footer.links.documentation"), href: "/resources" },
+            { name: t("footer.links.support"), href: "/resources" },
+        ],
+        legal: [
+            { name: t("footer.links.privacy"), href: "#" },
+            { name: t("footer.links.terms"), href: "#" },
+            { name: t("footer.links.cookies"), href: "#" },
+        ],
+    };
 
     return (
         <footer className="footer">
@@ -41,12 +43,12 @@ export function Footer() {
                             />
                         </div>
                         <p className="text-small text-muted" style={{ maxWidth: "280px" }}>
-                            Intelligent thermal energy systems for a sustainable future.
+                            {t("footer.desc")}
                         </p>
                     </div>
 
                     <div>
-                        <div className="footer-title">Product</div>
+                        <div className="footer-title">{t("footer.columns.product")}</div>
                         {footerLinks.product.map((link) => (
                             <Link key={link.name} href={link.href} className="footer-link">
                                 {link.name}
@@ -55,7 +57,7 @@ export function Footer() {
                     </div>
 
                     <div>
-                        <div className="footer-title">Company</div>
+                        <div className="footer-title">{t("footer.columns.company")}</div>
                         {footerLinks.company.map((link) => (
                             <Link key={link.name} href={link.href} className="footer-link">
                                 {link.name}
@@ -64,7 +66,7 @@ export function Footer() {
                     </div>
 
                     <div>
-                        <div className="footer-title">Resources</div>
+                        <div className="footer-title">{t("footer.columns.resources")}</div>
                         {footerLinks.resources.map((link) => (
                             <Link key={link.name} href={link.href} className="footer-link">
                                 {link.name}
@@ -73,7 +75,7 @@ export function Footer() {
                     </div>
 
                     <div>
-                        <div className="footer-title">Legal</div>
+                        <div className="footer-title">{t("footer.columns.legal")}</div>
                         {footerLinks.legal.map((link) => (
                             <Link key={link.name} href={link.href} className="footer-link">
                                 {link.name}

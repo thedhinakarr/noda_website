@@ -19,19 +19,18 @@ const inter = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NODA | Intelligent Thermal Energy Systems",
+  title: "NODA",
   description: "AI-driven energy management solutions for smart heating and cooling. Unmatched precision and control for district heating, building clusters, and industrial applications.",
   keywords: ["thermal energy", "AI", "district heating", "energy management", "smart heating", "cooling systems", "NODA", "CoPilot"],
   authors: [{ name: "NODA Intelligent Systems" }],
   icons: {
     icon: [
-      { url: "/NODA.png", sizes: "32x32", type: "image/png" },
-      { url: "/noda-icon.svg", type: "image/svg+xml" },
+      { url: "/NoBg.svg", type: "image/svg+xml" },
     ],
-    apple: "/NODA.png",
+    apple: "/NoBg.svg",
   },
   openGraph: {
-    title: "NODA | Intelligent Thermal Energy Systems",
+    title: "NODA",
     description: "AI-driven energy management solutions for smart heating and cooling.",
     url: "https://noda.se",
     siteName: "NODA",
@@ -40,10 +39,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NODA | Intelligent Thermal Energy Systems",
+    title: "NODA",
     description: "AI-driven energy management solutions for smart heating and cooling.",
   },
 };
+
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export default function RootLayout({
   children,
@@ -53,7 +54,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

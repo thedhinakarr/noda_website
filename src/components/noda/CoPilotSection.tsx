@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
  * CoPilot Product Section
  */
 export function CoPilotSection() {
+    const { t } = useLanguage();
     const sectionRef = useRef<HTMLElement>(null);
 
     useLayoutEffect(() => {
@@ -55,12 +57,7 @@ export function CoPilotSection() {
         return () => ctx.revert();
     }, []);
 
-    const features = [
-        "Real-time energy optimization",
-        "Predictive maintenance",
-        "Carbon footprint tracking",
-        "Seamless integration",
-    ];
+    const features = t("copilot.features") as any as string[];
 
     return (
         <section
@@ -76,25 +73,23 @@ export function CoPilotSection() {
                     {/* Text Content */}
                     <div className="product-text">
                         <Badge variant="outline" className="mb-4 text-[var(--noda-burgundy)] border-[var(--noda-burgundy)]/30 bg-[var(--noda-burgundy)]/5">
-                            NEW
+                            {t("copilot.new")}
                         </Badge>
 
                         <h2 className="text-h1 text-[var(--noda-white)] mb-4">
-                            Meet NODA CoPilot
+                            {t("copilot.title")}
                         </h2>
 
                         <p className="text-h3 text-[var(--noda-gray-200)] font-light mb-4">
-                            Advanced analytics at your fingertips
+                            {t("copilot.subtitle")}
                         </p>
 
                         <p className="text-body-lg text-[var(--noda-gray-300)] mb-8 leading-relaxed max-w-lg">
-                            An AI-powered module designed for energy and utility companies.
-                            Transform complex operational data into actionable insights for
-                            smarter thermal energy management decisions.
+                            {t("copilot.desc")}
                         </p>
 
                         <ul className="space-y-3 mb-8">
-                            {features.map((feature, i) => (
+                            {Array.isArray(features) && features.map((feature, i) => (
                                 <li key={i} className="flex items-center gap-3 text-[var(--noda-gray-200)]">
                                     <div className="w-1.5 h-1.5 rounded-full bg-[var(--noda-burgundy)]" />
                                     <span className="text-body">{feature}</span>
@@ -103,7 +98,7 @@ export function CoPilotSection() {
                         </ul>
 
                         <a href="/product" className="btn btn-primary inline-flex gap-2">
-                            <span>Learn More</span>
+                            <span>{t("copilot.learnMore")}</span>
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
@@ -128,9 +123,9 @@ export function CoPilotSection() {
                                     {/* Metrics Row */}
                                     <div className="grid grid-cols-3 gap-3">
                                         {[
-                                            { label: "Efficiency", value: "94.2%", trend: "+2.1%" },
-                                            { label: "Savings", value: "€24K", trend: "+12%" },
-                                            { label: "CO₂ Cut", value: "18T", trend: "+8.4%" },
+                                            { label: t("copilot.metrics.efficiency"), value: "94.2%", trend: "+2.1%" },
+                                            { label: t("copilot.metrics.savings"), value: "€24K", trend: "+12%" },
+                                            { label: t("copilot.metrics.co2"), value: "18T", trend: "+8.4%" },
                                         ].map((metric, i) => (
                                             <div key={i} className="p-3 bg-[var(--noda-dark-3)] rounded-lg">
                                                 <p className="text-xs text-[var(--noda-gray-400)] mb-1">{metric.label}</p>

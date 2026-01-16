@@ -5,6 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,13 +13,16 @@ gsap.registerPlugin(ScrollTrigger);
  * What We Do Section
  */
 export function WhatWeDo() {
+    const { t } = useLanguage();
     const sectionRef = useRef<HTMLElement>(null);
 
-    const steps = [
-        { num: "01", title: "Connect", desc: "Seamlessly integrate with your existing infrastructure and data sources." },
-        { num: "02", title: "Monitor", desc: "Real-time visibility across your entire thermal network in one dashboard." },
-        { num: "03", title: "Optimize", desc: "AI-powered decisions for maximum efficiency and cost reduction." },
-    ];
+    // Get steps from translation - cast as any to handle array type
+    const steps = t("whatWeDo.steps") as any as Array<{ num?: string, title: string, desc: string }>;
+    // Add numbers back since they aren't in translation (or mapped index+1)
+    const stepsWithNum = Array.isArray(steps) ? steps.map((step, i) => ({
+        ...step,
+        num: `0${i + 1}`
+    })) : [];
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -77,7 +81,7 @@ export function WhatWeDo() {
         }, sectionRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [stepsWithNum]); // Re-run when steps change
 
     return (
         <section ref={sectionRef} className="py-24 bg-[var(--noda-dark-1)]">
@@ -113,19 +117,18 @@ export function WhatWeDo() {
                     {/* Content */}
                     <div className="order-last lg:order-2">
                         <div className="whatwedo-text mb-10">
-                            <p className="text-label text-[var(--noda-burgundy)] mb-3">What We Do</p>
+                            <p className="text-label text-[var(--noda-burgundy)] mb-3">{t("whatWeDo.label")}</p>
                             <h2 className="text-h1 text-[var(--noda-white)] mb-4">
-                                AI-Driven Energy Management
+                                {t("whatWeDo.title")}
                             </h2>
                             <p className="text-body-lg text-[var(--noda-gray-300)] leading-relaxed">
-                                We provide intelligent solutions for smart heating and cooling systems.
-                                Our platform connects, monitors, and optimizes thermal networks in real-time.
+                                {t("whatWeDo.desc")}
                             </p>
                         </div>
 
                         {/* Steps */}
                         <div className="steps-container space-y-6">
-                            {steps.map((step, i) => (
+                            {stepsWithNum.map((step, i) => (
                                 <div key={i} className="step-item flex gap-5 group">
                                     <div className="flex-shrink-0">
                                         <span className="block text-2xl font-extralight text-[var(--noda-burgundy)] group-hover:text-[var(--noda-burgundy-light)] transition-colors duration-300">
@@ -142,7 +145,7 @@ export function WhatWeDo() {
 
                         <Button asChild className="mt-10">
                             <Link href="/success-stories" className="inline-flex gap-2">
-                                <span>See Success Stories</span>
+                                <span>{t("whatWeDo.button")}</span>
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>

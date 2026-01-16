@@ -3,6 +3,7 @@
 import { Navbar, Footer } from "@/components/layout";
 import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CoPilotSection } from "@/components/noda/CoPilotSection";
@@ -14,6 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ProductPage() {
+    const { t } = useLanguage();
     const pageRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
@@ -57,10 +59,10 @@ export default function ProductPage() {
         return () => ctx.revert();
     }, []);
 
+    const translatedFeatures = t("productPage.features") as any as Array<{ title: string; desc: string }>;
     const features = [
         {
-            title: "Real-time Optimization",
-            desc: "AI continuously analyzes and optimizes your thermal network performance, reducing energy waste and costs.",
+            ...translatedFeatures?.[0],
             icon: (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -68,8 +70,7 @@ export default function ProductPage() {
             ),
         },
         {
-            title: "Predictive Maintenance",
-            desc: "Anticipate equipment failures before they happen with machine learning-powered diagnostics.",
+            ...translatedFeatures?.[1],
             icon: (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -77,8 +78,7 @@ export default function ProductPage() {
             ),
         },
         {
-            title: "Carbon Tracking",
-            desc: "Monitor and report on CO₂ emissions with automated sustainability dashboards.",
+            ...translatedFeatures?.[2],
             icon: (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
@@ -87,11 +87,7 @@ export default function ProductPage() {
         },
     ];
 
-    const steps = [
-        { num: "01", title: "Connect", desc: "Integrate with your existing infrastructure and data sources seamlessly." },
-        { num: "02", title: "Monitor", desc: "Real-time visibility across your entire thermal network in one dashboard." },
-        { num: "03", title: "Optimize", desc: "AI-powered decisions for maximum efficiency and cost reduction." },
-    ];
+    const steps = t("productPage.howItWorks.steps") as any as Array<{ num: string; title: string; desc: string }>;
 
     return (
         <div ref={pageRef}>
@@ -101,16 +97,15 @@ export default function ProductPage() {
             <section className="relative min-h-[70vh] flex items-center bg-[var(--noda-black)]">
                 <div className="absolute inset-0 bg-gradient-to-b from-[var(--noda-burgundy)]/5 to-transparent" />
                 <div className="container product-hero-content relative z-10 pt-32">
-                    <p className="text-label text-[var(--noda-burgundy)] mb-4">PRODUCT</p>
+                    <p className="text-label text-[var(--noda-burgundy)] mb-4">{t("productPage.hero.label")}</p>
                     <h1 className="text-h1 text-white max-w-3xl mb-6">
-                        Meet <span className="gradient-text">NODA CoPilot</span>
+                        {t("productPage.hero.titlePrefix")} <span className="gradient-text">NODA CoPilot</span>
                     </h1>
                     <p className="text-body-lg text-[var(--noda-gray-300)] max-w-xl mb-8">
-                        Advanced AI analytics for thermal energy optimization.
-                        Transform complex operational data into actionable insights.
+                        {t("productPage.hero.desc")}
                     </p>
                     <Button asChild size="lg">
-                        <Link href="/resources">Request a Demo</Link>
+                        <Link href="/resources">{t("productPage.hero.cta")}</Link>
                     </Button>
                 </div>
             </section>
@@ -140,7 +135,7 @@ export default function ProductPage() {
             {/* How It Works */}
             <section className="how-section py-24 bg-[var(--noda-dark-1)]">
                 <div className="container">
-                    <h2 className="text-h1 text-white mb-16">How it works</h2>
+                    <h2 className="text-h1 text-white mb-16">{t("productPage.howItWorks.title")}</h2>
                     <div className="grid md:grid-cols-3 gap-12">
                         {steps.map((step, i) => (
                             <div key={i} className="how-step">
@@ -162,12 +157,12 @@ export default function ProductPage() {
             {/* CTA */}
             <section className="py-24 bg-[var(--noda-dark-2)] text-center">
                 <div className="container">
-                    <h2 className="text-h1 text-white mb-6">See CoPilot in action</h2>
+                    <h2 className="text-h1 text-white mb-6">{t("productPage.cta.title")}</h2>
                     <p className="text-body-lg text-[var(--noda-gray-300)] max-w-md mx-auto mb-8">
-                        Schedule a demo with our team to learn how CoPilot can work for you.
+                        {t("productPage.cta.desc")}
                     </p>
                     <Button asChild size="lg">
-                        <Link href="/resources">Request a demo</Link>
+                        <Link href="/resources">{t("productPage.cta.button")}</Link>
                     </Button>
                 </div>
             </section>

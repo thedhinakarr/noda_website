@@ -3,6 +3,7 @@
 import { Navbar, Footer } from "@/components/layout";
 import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CustomerSegments } from "@/components/noda/CustomerSegments";
@@ -13,35 +14,12 @@ import { Card, CardContent } from "@/components/ui/card";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const caseStudies = [
-    {
-        title: "European Energy Provider",
-        sector: "Utilities",
-        result: "35% reduction in energy waste",
-        quote: "NODA's platform has revolutionized how we manage our district heating network.",
-    },
-    {
-        title: "Nordic Municipality",
-        sector: "Public Sector",
-        result: "€2.4M annual savings",
-        quote: "The integration was seamless, and the results were immediate.",
-    },
-    {
-        title: "Real Estate Portfolio",
-        sector: "Commercial Buildings",
-        result: "40% efficiency improvement",
-        quote: "We've achieved comfort optimization while significantly cutting costs.",
-    },
-    {
-        title: "Industrial Complex",
-        sector: "Manufacturing",
-        result: "28% CO₂ reduction",
-        quote: "NODA helped us meet our sustainability targets two years ahead of schedule.",
-    },
-];
+
 
 export default function SuccessStoriesPage() {
+    const { t } = useLanguage();
     const pageRef = useRef<HTMLDivElement>(null);
+    const caseStudies = t("successStoriesPage.caseStudies") as any as Array<{ title: string; sector: string; result: string; quote: string }>;
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -85,12 +63,12 @@ export default function SuccessStoriesPage() {
             <section className="relative min-h-[60vh] flex items-center bg-[var(--noda-black)]">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--noda-burgundy)]/5 to-transparent" />
                 <div className="container success-hero relative z-10 pt-32">
-                    <p className="text-label text-[var(--noda-burgundy)] mb-4">SUCCESS STORIES</p>
+                    <p className="text-label text-[var(--noda-burgundy)] mb-4">{t("successStoriesPage.hero.label")}</p>
                     <h1 className="text-h1 text-white max-w-3xl mb-6">
-                        See how NODA <span className="gradient-text">delivers results</span>
+                        {t("successStoriesPage.hero.titlePrefix")} <span className="gradient-text">{t("successStoriesPage.hero.titleHighlight")}</span>
                     </h1>
                     <p className="text-body-lg text-[var(--noda-gray-300)] max-w-xl">
-                        Real outcomes from organizations across industries.
+                        {t("successStoriesPage.hero.desc")}
                     </p>
                 </div>
             </section>
@@ -129,9 +107,9 @@ export default function SuccessStoriesPage() {
             {/* CTA */}
             <section className="py-24 bg-[var(--noda-black)] text-center">
                 <div className="container">
-                    <h2 className="text-h1 text-white mb-6">Ready to write your success story?</h2>
+                    <h2 className="text-h1 text-white mb-6">{t("successStoriesPage.cta.title")}</h2>
                     <Button asChild size="lg">
-                        <Link href="/resources">Get in touch</Link>
+                        <Link href="/resources">{t("successStoriesPage.cta.button")}</Link>
                     </Button>
                 </div>
             </section>

@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,26 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
  * Testimonials Carousel
  */
 export function Testimonials() {
+    const { t } = useLanguage();
     const sectionRef = useRef<HTMLElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const testimonials = [
-        {
-            quote: "NODA's AI platform has revolutionized how we manage our district heating network. The predictive analytics alone have saved us millions.",
-            author: "R&D Lead",
-            company: "Engie",
-        },
-        {
-            quote: "The integration was seamless, and the results were immediate. We've seen a 35% improvement in thermal efficiency.",
-            author: "Product Manager",
-            company: "C4 Energi",
-        },
-        {
-            quote: "Their expertise in thermal systems combined with cutting-edge AI is unmatched in the industry.",
-            author: "Chief Operations Officer",
-            company: "Umeå Energi",
-        },
-    ];
+    const testimonials = t("testimonials") as any as Array<{ quote: string, author: string, company: string }>;
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -55,10 +41,12 @@ export function Testimonials() {
     // Auto-rotate
     useEffect(() => {
         const interval = setInterval(() => {
-            setActiveIndex((prev) => (prev + 1) % testimonials.length);
+            if (testimonials && testimonials.length > 0) {
+                setActiveIndex((prev) => (prev + 1) % testimonials.length);
+            }
         }, 5000);
         return () => clearInterval(interval);
-    }, [testimonials.length]);
+    }, [testimonials]);
 
     return (
         <section ref={sectionRef} className="py-20 bg-[var(--noda-dark-1)]">

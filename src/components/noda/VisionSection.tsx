@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,7 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
  * Vision Section
  */
 export function VisionSection() {
+    const { t } = useLanguage();
     const sectionRef = useRef<HTMLElement>(null);
+
+    // Get vision title parts - cast as array
+    const titleParts = t("vision.titleParts") as any as Array<{ text: string, highlight?: boolean, highlightText?: string, gradient?: boolean }>;
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -55,7 +60,7 @@ export function VisionSection() {
         }, sectionRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [titleParts]); // Re-run when text content changes
 
     return (
         <section
@@ -71,12 +76,14 @@ export function VisionSection() {
                     {/* Main Statement */}
                     <div>
                         <h2 className="text-h1 text-[var(--noda-white)] leading-tight">
-                            <span className="vision-line block">Serving the energy sector,</span>
-                            <span className="vision-line block">with a particular focus on</span>
-                            <span className="vision-line block">
-                                the <span className="gradient-text">complex thermal</span>
-                            </span>
-                            <span className="vision-line block gradient-text">energy landscape.</span>
+                            {Array.isArray(titleParts) && titleParts.map((part, i) => (
+                                <span key={i} className={`vision-line block ${part.gradient ? "gradient-text" : ""}`}>
+                                    {part.text}
+                                    {part.highlight && (
+                                        <span className="gradient-text">{part.highlightText}</span>
+                                    )}
+                                </span>
+                            ))}
                         </h2>
                     </div>
 
@@ -85,19 +92,15 @@ export function VisionSection() {
                         <div className="flex gap-6 mb-6">
                             <div className="w-[2px] bg-gradient-to-b from-[var(--noda-burgundy)] to-transparent" style={{ minHeight: "100px" }} />
                             <div>
-                                <p className="text-label text-[var(--noda-burgundy)] mb-3">Our Vision</p>
+                                <p className="text-label text-[var(--noda-burgundy)] mb-3">{t("vision.label")}</p>
                                 <p className="text-body-lg text-[var(--noda-gray-200)] leading-relaxed">
-                                    Global energy demand is projected to increase by 21% by 2040.
-                                    We believe the answer lies not in producing more energy, but
-                                    in using what we have more intelligently.
+                                    {t("vision.mainText")}
                                 </p>
                             </div>
                         </div>
 
                         <p className="text-body text-[var(--noda-gray-300)] leading-relaxed mb-6 pl-8">
-                            Our AI-driven solutions optimize thermal networks, reduce waste,
-                            and help organizations achieve sustainability goals—without
-                            compromising comfort or reliability.
+                            {t("vision.subText")}
                         </p>
 
                         <div className="grid grid-cols-2 gap-4 pl-8">
@@ -108,8 +111,8 @@ export function VisionSection() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                         </svg>
                                     </div>
-                                    <p className="font-medium text-[var(--noda-white)] text-sm mb-1">Efficiency First</p>
-                                    <p className="text-xs text-[var(--noda-gray-400)]">Maximize output, minimize waste</p>
+                                    <p className="font-medium text-[var(--noda-white)] text-sm mb-1">{t("vision.cards.efficiency.title")}</p>
+                                    <p className="text-xs text-[var(--noda-gray-400)]">{t("vision.cards.efficiency.desc")}</p>
                                 </CardContent>
                             </Card>
 
@@ -120,8 +123,8 @@ export function VisionSection() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
                                         </svg>
                                     </div>
-                                    <p className="font-medium text-[var(--noda-white)] text-sm mb-1">Global Impact</p>
-                                    <p className="text-xs text-[var(--noda-gray-400)]">Carbon-neutral future</p>
+                                    <p className="font-medium text-[var(--noda-white)] text-sm mb-1">{t("vision.cards.impact.title")}</p>
+                                    <p className="text-xs text-[var(--noda-gray-400)]">{t("vision.cards.impact.desc")}</p>
                                 </CardContent>
                             </Card>
                         </div>

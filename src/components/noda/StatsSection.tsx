@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,13 +12,14 @@ gsap.registerPlugin(ScrollTrigger);
  * Stats Section with Counter Animation
  */
 export function StatsSection() {
+    const { t } = useLanguage();
     const sectionRef = useRef<HTMLElement>(null);
 
     const stats = [
-        { value: 20, suffix: "+", label: "Years of Excellence" },
-        { value: 15, suffix: "K+", label: "Connected Systems" },
-        { value: 40, suffix: "%", label: "Efficiency Gains" },
-        { value: 3, suffix: "MT", label: "CO₂ Reduced Annually" },
+        { value: 20, suffix: "+", label: t("stats.years") },
+        { value: 15, suffix: "K+", label: t("stats.connected") },
+        { value: 40, suffix: "%", label: t("stats.efficiency") },
+        { value: 3, suffix: "MT", label: t("stats.co2") },
     ];
 
     useLayoutEffect(() => {
@@ -64,7 +66,7 @@ export function StatsSection() {
         }, sectionRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [stats]); // Update when stats (labels) change
 
     return (
         <section ref={sectionRef} className="py-20 bg-[var(--noda-dark-1)] border-y border-[var(--noda-dark-4)]">
@@ -90,6 +92,7 @@ export function StatsSection() {
  * Partner Logos Marquee
  */
 export function PartnersMarquee() {
+    const { t } = useLanguage();
     const partners = [
         "VEOLIA", "DAIMLER", "ENGIE", "SIEMENS",
         "SCHNEIDER", "ABB", "VATTENFALL", "E.ON"
@@ -99,7 +102,7 @@ export function PartnersMarquee() {
         <section className="py-12 bg-[var(--noda-black)] overflow-hidden">
             <div className="mb-6 text-center">
                 <p className="text-label text-[var(--noda-gray-400)]">
-                    Trusted by Industry Leaders
+                    {t("stats.trustedBy")}
                 </p>
             </div>
 

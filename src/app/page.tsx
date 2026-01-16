@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Import NODA components
 import { StatsSection, PartnersMarquee } from "@/components/noda/StatsSection";
@@ -19,7 +20,11 @@ import { Button } from "@/components/ui/button";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+    const { t } = useLanguage();
     const heroRef = useRef<HTMLElement>(null);
+
+    // Get title parts from translation - cast as any to handle the array return type
+    const titleParts = t("hero.titleParts") as any as Array<{ text: string, highlight?: boolean }>;
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -84,10 +89,7 @@ export default function Home() {
         }, heroRef);
 
         return () => ctx.revert();
-    }, []);
-
-    // Split title into words for animation
-    const titleWords = ["We", "are", "dedicated", "to", "thermal", "excellence"];
+    }, [titleParts]); // Re-run animation when language changes
 
     return (
         <>
@@ -116,28 +118,24 @@ export default function Home() {
                 <div className="hero-content container relative z-10 pt-32 lg:pt-48 pb-12 lg:pb-20">
                     {/* Label */}
                     <p className="hero-label text-label text-[var(--noda-burgundy)] mb-6">
-                        AI-Powered Energy Management
+                        {t("hero.label")}
                     </p>
 
                     {/* Animated Title */}
                     <h1 className="heading-display hero-title max-w-4xl mb-8">
-                        {titleWords.map((word, i) => (
+                        {Array.isArray(titleParts) && titleParts.map((part, i) => (
                             <span
                                 key={i}
-                                className={`hero-word inline-block mr-4 ${word === "thermal" || word === "excellence"
-                                    ? "gradient-text"
-                                    : ""
-                                    }`}
+                                className={`hero-word inline-block mr-4 ${part.highlight ? "gradient-text" : ""}`}
                             >
-                                {word}
+                                {part.text}
                             </span>
                         ))}
                     </h1>
 
                     {/* Subtitle */}
                     <p className="hero-subtitle text-body-lg text-[var(--noda-gray-500)] max-w-xl">
-                        AI-driven energy management solutions for smart heating and cooling.
-                        Unmatched precision and control for a sustainable future.
+                        {t("hero.subtitle")}
                     </p>
                 </div>
             </section>
@@ -169,19 +167,19 @@ export default function Home() {
             {/* CTA Section */}
             <section className="py-32 bg-[var(--noda-dark-1)] text-center">
                 <div className="container">
-                    <h2 className="text-h1 text-white mb-6">Ready for smarter energy?</h2>
+                    <h2 className="text-h1 text-white mb-6">{t("cta.title")}</h2>
                     <p className="text-body-lg text-[var(--noda-gray-300)] max-w-lg mx-auto mb-10">
-                        Let&apos;s discuss how NODA can transform your thermal energy management.
+                        {t("cta.subtitle")}
                     </p>
                     <div className="flex gap-4 justify-center">
                         <Button asChild size="lg">
                             <Link href="/resources">
-                                Get in touch
+                                {t("cta.getInTouch")}
                             </Link>
                         </Button>
                         <Button asChild variant="outline" size="lg">
                             <Link href="/product">
-                                Learn more
+                                {t("cta.learnMore")}
                             </Link>
                         </Button>
                     </div>
