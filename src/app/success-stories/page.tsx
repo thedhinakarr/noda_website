@@ -1,10 +1,17 @@
+"use client";
+
 import { Navbar, Footer } from "@/components/layout";
 import Link from "next/link";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CustomerSegments } from "@/components/noda/CustomerSegments";
+import { Testimonials } from "@/components/noda/Testimonials";
+import { StatsSection } from "@/components/noda/StatsSection";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
-export const metadata = {
-    title: "Success Stories | NODA",
-    description: "Case studies and customer testimonials",
-};
+gsap.registerPlugin(ScrollTrigger);
 
 const caseStudies = [
     {
@@ -34,91 +41,102 @@ const caseStudies = [
 ];
 
 export default function SuccessStoriesPage() {
+    const pageRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            // Hero entrance - immediate animation
+            gsap.from(".success-hero > *", {
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: "power3.out",
+            });
+
+            // Case study cards - animate in on scroll
+            const caseCards = document.querySelectorAll(".case-card");
+            caseCards.forEach((card, i) => {
+                gsap.fromTo(card,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: i * 0.1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 90%",
+                        },
+                    }
+                );
+            });
+        }, pageRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <>
+        <div ref={pageRef}>
             <Navbar />
 
             {/* Hero */}
-            <section className="hero" style={{ minHeight: "60vh" }}>
-                <div className="hero-bg">
-                    <div
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                            background: "linear-gradient(180deg, #1a1a1a 0%, #252525 100%)",
-                        }}
-                    />
-                </div>
-                <div className="hero-overlay" style={{ background: "rgba(0,0,0,0.3)" }} />
-
-                <div className="hero-content container">
-                    <p className="text-small text-muted mb-4">SUCCESS STORIES</p>
-                    <h1 className="heading-display hero-title">
-                        See how NODA delivers results
+            <section className="relative min-h-[60vh] flex items-center bg-[var(--noda-black)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--noda-burgundy)]/5 to-transparent" />
+                <div className="container success-hero relative z-10 pt-32">
+                    <p className="text-label text-[var(--noda-burgundy)] mb-4">SUCCESS STORIES</p>
+                    <h1 className="text-h1 text-white max-w-3xl mb-6">
+                        See how NODA <span className="gradient-text">delivers results</span>
                     </h1>
-                    <p className="text-body hero-subtitle">
+                    <p className="text-body-lg text-[var(--noda-gray-300)] max-w-xl">
                         Real outcomes from organizations across industries.
                     </p>
                 </div>
             </section>
 
-            {/* Case Studies */}
-            <section className="section">
+            {/* Case Studies Grid */}
+            <section className="py-24 bg-[var(--noda-dark-1)]">
                 <div className="container">
-                    <div className="grid-2">
+                    <div className="cases-grid grid md:grid-cols-2 gap-6">
                         {caseStudies.map((study, i) => (
-                            <div key={i} className="card">
-                                <p className="text-small text-muted mb-4">{study.sector}</p>
-                                <div className="card-title" style={{ fontSize: "1.5rem", marginBottom: "16px" }}>
-                                    {study.title}
-                                </div>
-                                <p className="card-text mb-6" style={{ fontStyle: "italic" }}>
-                                    &ldquo;{study.quote}&rdquo;
-                                </p>
-                                <div style={{
-                                    padding: "12px 16px",
-                                    background: "var(--noda-bg)",
-                                    display: "inline-block",
-                                    fontSize: "14px"
-                                }}>
-                                    {study.result}
-                                </div>
-                            </div>
+                            <Card key={i} className="case-card bg-[var(--noda-dark-2)] border-[var(--noda-dark-4)] hover:border-[var(--noda-burgundy)]/30 transition-all duration-300 group">
+                                <CardContent className="p-8">
+                                    <p className="text-label text-[var(--noda-gray-400)] mb-4">{study.sector}</p>
+                                    <h3 className="text-xl font-medium text-white mb-4">{study.title}</h3>
+                                    <p className="text-[var(--noda-gray-300)] italic mb-6">
+                                        &ldquo;{study.quote}&rdquo;
+                                    </p>
+                                    <div className="inline-block px-4 py-2 bg-[var(--noda-burgundy)]/10 text-[var(--noda-burgundy)] text-sm font-medium rounded">
+                                        {study.result}
+                                    </div>
+                                </CardContent>
+                            </Card>
                         ))}
                     </div>
                 </div>
             </section>
+
+            {/* Customer Segments */}
+            <CustomerSegments />
 
             {/* Stats */}
-            <section className="section-sm" style={{ background: "var(--noda-bg-alt)" }}>
-                <div className="container">
-                    <div className="grid-4 text-center">
-                        {[
-                            { value: "150+", label: "Customers Worldwide" },
-                            { value: "€50M+", label: "Customer Savings" },
-                            { value: "3MT", label: "CO₂ Reduced Annually" },
-                            { value: "99.9%", label: "Platform Uptime" },
-                        ].map((stat, i) => (
-                            <div key={i}>
-                                <div className="heading-2 mb-4">{stat.value}</div>
-                                <div className="text-small text-muted">{stat.label}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <StatsSection />
+
+            {/* Testimonials */}
+            <Testimonials />
 
             {/* CTA */}
-            <section className="section text-center">
+            <section className="py-24 bg-[var(--noda-black)] text-center">
                 <div className="container">
-                    <h2 className="heading-2 mb-6">Ready to write your success story?</h2>
-                    <Link href="/resources" className="btn btn-primary">
-                        Get in touch
-                    </Link>
+                    <h2 className="text-h1 text-white mb-6">Ready to write your success story?</h2>
+                    <Button asChild size="lg">
+                        <Link href="/resources">Get in touch</Link>
+                    </Button>
                 </div>
             </section>
 
             <Footer />
-        </>
+        </div>
     );
 }
