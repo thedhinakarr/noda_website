@@ -4,56 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================================
-   HELVETICA NEUE - Premium Font (Restored)
+   INTER - Premium Font (Local)
    ============================================================================ */
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('/fonts/HelveticaNeue-Ultralight.otf') format('opentype');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('/fonts/HelveticaNeue-Thin.otf') format('opentype');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('/fonts/HelveticaNeue-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('/fonts/HelveticaNeue-Regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('/fonts/HelveticaNeue-Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('/fonts/HelveticaNeue-Bold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
 
 :root {
     /* Background colors - Very dark theme */
@@ -247,8 +199,14 @@ html.light .text-\[var\(--noda-white\)\] {
 body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    /* Preserving Helvetica Neue as primary, with fallbacks */
-    font-family: 'Helvetica Neue', var(--font-inter), system-ui, sans-serif;
+    /* Using Inter via next/font/local variable */
+    font-family: var(--font-inter), system-ui, sans-serif;
+    /* ss07: Square Punctuation 
+       cv05: l with tail (readability)
+       cv11: Single-story a (geometric/modern look) 
+       calt: Contextual alternates (standard) */
+    font-feature-settings: "ss07" 1, "cv05" 1, "cv11" 1, "calt" 1;
+    font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -365,6 +323,7 @@ body {
 
 @theme inline {
     /* Colors - these create utilities like bg-background, text-foreground, border-border */
+    --font-sans: var(--font-inter);
     --color-background: hsl(var(--background));
     --color-foreground: hsl(var(--foreground));
     --color-card: hsl(var(--card));
@@ -423,21 +382,21 @@ body {
 
 /* TYPOGRAPHY */
 .heading-display {
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
     font-weight: 400;
     line-height: 1.05;
     letter-spacing: -0.02em;
 }
 
 .heading-1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.02em;
 }
 
 .heading-2 {
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 400;
     line-height: 1.2;
     letter-spacing: -0.01em;
@@ -889,7 +848,7 @@ body {
 }
 
 .text-h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -944,11 +903,12 @@ body {
 
 /* Stat Values - Large numbers */
 .stat-value {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2rem, 6vw, 4rem);
     font-weight: 300;
     line-height: 1;
     color: var(--noda-white);
     letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
 }
 
 .stat-label {

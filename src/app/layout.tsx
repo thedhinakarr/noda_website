@@ -1,6 +1,22 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
+
+const inter = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Inter/web/InterVariable.woff2",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Inter/web/InterVariable-Italic.woff2",
+      style: "italic",
+    },
+  ],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "NODA | Intelligent Thermal Energy Systems",
@@ -36,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
     </html>
