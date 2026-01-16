@@ -77,11 +77,11 @@ export function Testimonials() {
                             <blockquote
                                 key={index}
                                 className={`absolute inset-0 transition-all duration-700 ${index === activeIndex
-                                        ? "opacity-100 translate-y-0"
-                                        : "opacity-0 translate-y-4"
+                                    ? "opacity-100 translate-y-0"
+                                    : "opacity-0 translate-y-4"
                                     }`}
                             >
-                                <p className="text-xl md:text-2xl text-white font-light leading-relaxed">
+                                <p className="text-lg md:text-2xl text-[var(--noda-white)] font-light leading-relaxed">
                                     "{testimonial.quote}"
                                 </p>
                             </blockquote>
@@ -107,8 +107,8 @@ export function Testimonials() {
                                 variant="ghost"
                                 size="icon"
                                 className={`w-2 h-2 rounded-full p-0 min-w-0 transition-all duration-300 ${index === activeIndex
-                                        ? "bg-[var(--noda-burgundy)] w-6"
-                                        : "bg-[var(--noda-dark-4)] hover:bg-[var(--noda-gray-400)]"
+                                    ? "bg-[var(--noda-burgundy)] w-6"
+                                    : "bg-[var(--noda-dark-4)] hover:bg-[var(--noda-gray-400)]"
                                     }`}
                             />
                         ))}

@@ -79,7 +79,7 @@ export function CoPilotSection() {
                             NEW
                         </Badge>
 
-                        <h2 className="text-h1 text-white mb-4">
+                        <h2 className="text-h1 text-[var(--noda-white)] mb-4">
                             Meet NODA CoPilot
                         </h2>
 
@@ -134,7 +134,7 @@ export function CoPilotSection() {
                                         ].map((metric, i) => (
                                             <div key={i} className="p-3 bg-[var(--noda-dark-3)] rounded-lg">
                                                 <p className="text-xs text-[var(--noda-gray-400)] mb-1">{metric.label}</p>
-                                                <p className="text-lg font-light text-white">{metric.value}</p>
+                                                <p className="text-lg font-light text-[var(--noda-white)]">{metric.value}</p>
                                                 <p className="text-xs text-emerald-400 mt-1">{metric.trend}</p>
                                             </div>
                                         ))}

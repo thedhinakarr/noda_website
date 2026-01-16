@@ -69,11 +69,11 @@ export function StatsSection() {
     return (
         <section ref={sectionRef} className="py-20 bg-[var(--noda-dark-1)] border-y border-[var(--noda-dark-4)]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12">
                     {stats.map((stat, index) => (
                         <Card key={index} className="stat-item text-center bg-transparent border-0">
                             <CardContent className="p-0">
-                                <div id={`stat-${index}`} className="stat-value">
+                                <div id={`stat-${index}`} className="stat-value text-[var(--noda-white)]">
                                     0{stat.suffix}
                                 </div>
                                 <p className="stat-label">{stat.label}</p>
@@ -108,7 +108,7 @@ export function PartnersMarquee() {
                     {[...partners, ...partners].map((partner, i) => (
                         <span
                             key={i}
-                            className="text-2xl font-light text-[var(--noda-gray-500)] hover:text-[var(--noda-gray-300)] transition-colors duration-300 whitespace-nowrap"
+                            className="text-2xl font-light text-[var(--noda-gray-300)] hover:text-[var(--noda-gray-200)] transition-colors duration-300 whitespace-nowrap"
                         >
                             {partner}
                         </span>

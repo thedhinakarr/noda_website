@@ -106,7 +106,7 @@ export function ApplicationAreas() {
                 {/* Header */}
                 <div className="areas-header text-center mb-16">
                     <p className="text-label text-[var(--noda-burgundy)] mb-3">Application Areas</p>
-                    <h2 className="text-h1 text-white mb-4">
+                    <h2 className="text-h1 text-[var(--noda-white)] mb-4">
                         Solutions for Every Sector
                     </h2>
                     <p className="text-body-lg text-[var(--noda-gray-300)] max-w-2xl mx-auto">
@@ -116,7 +116,7 @@ export function ApplicationAreas() {
                 </div>
 
                 {/* Grid */}
-                <div className="areas-grid grid md:grid-cols-2 gap-5">
+                <div className="areas-grid grid grid-cols-1 md:grid-cols-2 gap-5">
                     {areas.map((area, i) => (
                         <Card
                             key={i}
@@ -132,7 +132,7 @@ export function ApplicationAreas() {
                                     </span>
                                 </div>
 
-                                <h3 className="text-lg font-medium text-white mb-2 group-hover:text-[var(--noda-burgundy-light)] transition-colors duration-300">
+                                <h3 className="text-lg font-medium text-[var(--noda-white)] mb-2 group-hover:text-[var(--noda-burgundy-light)] transition-colors duration-300">
                                     {area.title}
                                 </h3>
 

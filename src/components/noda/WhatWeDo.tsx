@@ -82,9 +82,9 @@ export function WhatWeDo() {
     return (
         <section ref={sectionRef} className="py-24 bg-[var(--noda-dark-1)]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                     {/* Visual */}
-                    <div className="whatwedo-visual relative order-2 lg:order-1">
+                    <div className="whatwedo-visual relative order-first lg:order-1 mb-8 lg:mb-0">
                         <div className="aspect-square bg-[var(--noda-dark-2)] rounded-2xl border border-[var(--noda-dark-4)] p-8 relative overflow-hidden">
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="relative w-64 h-64">
@@ -111,10 +111,10 @@ export function WhatWeDo() {
                     </div>
 
                     {/* Content */}
-                    <div className="order-1 lg:order-2">
+                    <div className="order-last lg:order-2">
                         <div className="whatwedo-text mb-10">
                             <p className="text-label text-[var(--noda-burgundy)] mb-3">What We Do</p>
-                            <h2 className="text-h1 text-white mb-4">
+                            <h2 className="text-h1 text-[var(--noda-white)] mb-4">
                                 AI-Driven Energy Management
                             </h2>
                             <p className="text-body-lg text-[var(--noda-gray-300)] leading-relaxed">
@@ -133,7 +133,7 @@ export function WhatWeDo() {
                                         </span>
                                     </div>
                                     <div>
-                                        <h4 className="text-lg font-medium text-white mb-1">{step.title}</h4>
+                                        <h4 className="text-lg font-medium text-[var(--noda-white)] mb-1">{step.title}</h4>
                                         <p className="text-[var(--noda-gray-300)] text-sm">{step.desc}</p>
                                     </div>
                                 </div>

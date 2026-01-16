@@ -100,7 +100,7 @@ export default function Home() {
                     <div
                         className="hero-bg-gradient w-full h-full"
                         style={{
-                            background: "radial-gradient(ellipse at 30% 20%, rgba(165, 28, 71, 0.15) 0%, transparent 50%), linear-gradient(180deg, #0A0A0A 0%, #141414 100%)",
+                            background: "radial-gradient(ellipse at 30% 20%, hsl(var(--noda-burgundy) / 0.15) 0%, transparent 50%), linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--noda-dark-1)) 100%)",
                         }}
                     />
                 </div>
@@ -113,7 +113,7 @@ export default function Home() {
 
                 <div className="hero-overlay" />
 
-                <div className="hero-content container relative z-10" style={{ paddingTop: "180px" }}>
+                <div className="hero-content container relative z-10 pt-32 lg:pt-48">
                     {/* Label */}
                     <p className="hero-label text-label text-[var(--noda-burgundy)] mb-6">
                         AI-Powered Energy Management
@@ -135,7 +135,7 @@ export default function Home() {
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="hero-subtitle text-body-lg text-[var(--noda-gray-300)] max-w-xl">
+                    <p className="hero-subtitle text-body-lg text-[var(--noda-gray-500)] max-w-xl">
                         AI-driven energy management solutions for smart heating and cooling.
                         Unmatched precision and control for a sustainable future.
                     </p>

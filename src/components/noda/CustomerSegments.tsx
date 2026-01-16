@@ -32,7 +32,7 @@ export function CustomerSegments() {
         {
             title: "Real Estate",
             quote: "Tenant comfort with reduced operational costs.",
-            gradient: "from-[var(--noda-dark-3)] to-[var(--noda-dark-2)]",
+            gradient: "from-[#2d3436] to-[#000000]", // Fixed dark gradient
         },
     ];
 
@@ -86,7 +86,7 @@ export function CustomerSegments() {
                 {/* Header */}
                 <div className="segments-header text-center mb-12">
                     <p className="text-label text-[var(--noda-burgundy)] mb-3">Success Stories</p>
-                    <h2 className="text-h1 text-white mb-4">
+                    <h2 className="text-h1 text-[var(--noda-white)] mb-4">
                         Trusted Across Industries
                     </h2>
                     <p className="text-body-lg text-[var(--noda-gray-300)] max-w-xl mx-auto">
@@ -95,7 +95,7 @@ export function CustomerSegments() {
                 </div>
 
                 {/* Grid */}
-                <div className="segments-grid grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="segments-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {segments.map((segment, i) => (
                         <Card
                             key={i}
