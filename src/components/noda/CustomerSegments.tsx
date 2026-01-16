@@ -1,16 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Customer Segments / Success Stories
- * Large image cards with gradient overlays
  */
 export function CustomerSegments() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -38,32 +36,44 @@ export function CustomerSegments() {
         },
     ];
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            // Header
-            gsap.from(".segments-header > *", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 80%",
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.1,
-                ease: "power2.out",
+            // Header with fromTo
+            const headerItems = document.querySelectorAll(".segments-header > *");
+            headerItems.forEach((item, i) => {
+                gsap.fromTo(item,
+                    { y: 25, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: i * 0.08,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: "top 80%",
+                        },
+                    }
+                );
             });
 
             // Cards stagger
-            gsap.from(".segment-card", {
-                scrollTrigger: {
-                    trigger: ".segments-grid",
-                    start: "top 80%",
-                },
-                y: 60,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.12,
-                ease: "power2.out",
+            const segmentCards = document.querySelectorAll(".segment-card");
+            segmentCards.forEach((card, i) => {
+                gsap.fromTo(card,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: 0.2 + i * 0.1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: ".segments-grid",
+                            start: "top 85%",
+                        },
+                    }
+                );
             });
         }, sectionRef);
 
@@ -71,44 +81,41 @@ export function CustomerSegments() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="success" className="py-32 bg-[var(--noda-black)]">
+        <section ref={sectionRef} id="success" className="py-24 bg-[var(--noda-black)]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 {/* Header */}
-                <div className="segments-header text-center mb-20">
-                    <p className="text-label text-[var(--noda-burgundy)] mb-4">Success Stories</p>
-                    <h2 className="text-h1 text-white mb-6">
+                <div className="segments-header text-center mb-12">
+                    <p className="text-label text-[var(--noda-burgundy)] mb-3">Success Stories</p>
+                    <h2 className="text-h1 text-white mb-4">
                         Trusted Across Industries
                     </h2>
-                    <p className="text-body-lg text-[var(--noda-gray-300)] max-w-2xl mx-auto">
-                        From energy providers to real estate portfolios, NODA delivers
-                        measurable impact.
+                    <p className="text-body-lg text-[var(--noda-gray-300)] max-w-xl mx-auto">
+                        See how leading organizations leverage NODA to transform their thermal operations.
                     </p>
                 </div>
 
                 {/* Grid */}
-                <div className="segments-grid grid md:grid-cols-2 gap-6">
+                <div className="segments-grid grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {segments.map((segment, i) => (
                         <Card
                             key={i}
-                            className={`segment-card relative group aspect-[4/3] overflow-hidden cursor-pointer bg-gradient-to-br ${segment.gradient} border-0`}
+                            className={`segment-card group relative overflow-hidden cursor-pointer bg-gradient-to-br ${segment.gradient} border-0 hover:scale-[1.02] transition-transform duration-300`}
                         >
-                            <CardContent className="absolute inset-0 p-8 flex flex-col justify-end">
-                                <p className="text-label text-white/60 mb-2">{segment.title}</p>
-                                <p className="text-h3 text-white font-light leading-snug max-w-xs">
+                            <CardContent className="p-5 h-48 flex flex-col justify-end relative z-10">
+                                <h3 className="text-white font-medium mb-2 text-lg">
+                                    {segment.title}
+                                </h3>
+                                <p className="text-white/70 text-sm">
                                     "{segment.quote}"
                                 </p>
 
                                 {/* Arrow */}
-                                <div className="mt-6 flex items-center gap-2 text-white/60 group-hover:text-white transition-colors duration-300">
-                                    <span className="text-sm">Read case study</span>
-                                    <svg className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
                                 </div>
                             </CardContent>
-
-                            {/* Hover overlay */}
-                            <div className="absolute inset-0 bg-[var(--noda-burgundy)]/0 group-hover:bg-[var(--noda-burgundy)]/10 transition-colors duration-500" />
                         </Card>
                     ))}
                 </div>

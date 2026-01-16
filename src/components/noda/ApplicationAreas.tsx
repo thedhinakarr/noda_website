@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Application Areas Grid
- * Clean 4-card grid with hover effects
  */
 export function ApplicationAreas() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -57,32 +56,44 @@ export function ApplicationAreas() {
         },
     ];
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            // Header
-            gsap.from(".areas-header > *", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 80%",
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.1,
-                ease: "power2.out",
+            // Header with fromTo
+            const headerItems = document.querySelectorAll(".areas-header > *");
+            headerItems.forEach((item, i) => {
+                gsap.fromTo(item,
+                    { y: 25, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: i * 0.08,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: "top 80%",
+                        },
+                    }
+                );
             });
 
             // Cards stagger
-            gsap.from(".area-card", {
-                scrollTrigger: {
-                    trigger: ".areas-grid",
-                    start: "top 80%",
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: "power2.out",
+            const areaCards = document.querySelectorAll(".area-card");
+            areaCards.forEach((card, i) => {
+                gsap.fromTo(card,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: 0.2 + i * 0.1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: ".areas-grid",
+                            start: "top 85%",
+                        },
+                    }
+                );
             });
         }, sectionRef);
 
@@ -90,12 +101,12 @@ export function ApplicationAreas() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-32 bg-[var(--noda-black)]">
+        <section ref={sectionRef} className="py-24 bg-[var(--noda-black)]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 {/* Header */}
-                <div className="areas-header text-center mb-20">
-                    <p className="text-label text-[var(--noda-burgundy)] mb-4">Application Areas</p>
-                    <h2 className="text-h1 text-white mb-6">
+                <div className="areas-header text-center mb-16">
+                    <p className="text-label text-[var(--noda-burgundy)] mb-3">Application Areas</p>
+                    <h2 className="text-h1 text-white mb-4">
                         Solutions for Every Sector
                     </h2>
                     <p className="text-body-lg text-[var(--noda-gray-300)] max-w-2xl mx-auto">
@@ -105,15 +116,15 @@ export function ApplicationAreas() {
                 </div>
 
                 {/* Grid */}
-                <div className="areas-grid grid md:grid-cols-2 gap-6">
+                <div className="areas-grid grid md:grid-cols-2 gap-5">
                     {areas.map((area, i) => (
                         <Card
                             key={i}
-                            className="area-card group bg-[var(--noda-dark-2)] border-[var(--noda-dark-4)] hover:border-[var(--noda-burgundy)]/30 transition-all duration-500 cursor-pointer hover-lift"
+                            className="area-card group bg-[var(--noda-dark-2)] border-[var(--noda-dark-4)] hover:border-[var(--noda-burgundy)]/30 transition-all duration-500 cursor-pointer"
                         >
-                            <CardContent className="p-8">
-                                <div className="flex items-start justify-between mb-6">
-                                    <div className="w-12 h-12 rounded-lg bg-[var(--noda-burgundy)]/10 flex items-center justify-center text-[var(--noda-burgundy)] group-hover:bg-[var(--noda-burgundy)] group-hover:text-white transition-all duration-300">
+                            <CardContent className="p-6">
+                                <div className="flex items-start justify-between mb-5">
+                                    <div className="w-11 h-11 rounded-lg bg-[var(--noda-burgundy)]/10 flex items-center justify-center text-[var(--noda-burgundy)] group-hover:bg-[var(--noda-burgundy)] group-hover:text-white transition-all duration-300">
                                         {area.icon}
                                     </div>
                                     <span className="text-xs tracking-widest text-[var(--noda-gray-400)] uppercase">
@@ -121,11 +132,11 @@ export function ApplicationAreas() {
                                     </span>
                                 </div>
 
-                                <h3 className="text-h3 text-white mb-3 group-hover:text-[var(--noda-burgundy-light)] transition-colors duration-300">
+                                <h3 className="text-lg font-medium text-white mb-2 group-hover:text-[var(--noda-burgundy-light)] transition-colors duration-300">
                                     {area.title}
                                 </h3>
 
-                                <p className="text-body text-[var(--noda-gray-300)] mb-6">
+                                <p className="text-sm text-[var(--noda-gray-300)] mb-5">
                                     {area.description}
                                 </p>
 

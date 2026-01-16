@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navLinks = [
     { name: "Product", href: "/product" },
@@ -34,8 +36,16 @@ export function Navbar() {
         <>
             <nav className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
                 <div className="container nav-content">
-                    <Link href="/" className="nav-logo">
-                        Noda
+                    {/* Logo */}
+                    <Link href="/" className="nav-logo flex items-center gap-2">
+                        <Image
+                            src="/NoBg.png"
+                            alt="NODA"
+                            width={32}
+                            height={32}
+                            className="h-8 w-auto"
+                        />
+                        <span className="font-medium text-lg tracking-tight">Noda</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -62,20 +72,26 @@ export function Navbar() {
                                 </svg>
                             </a>
                         </Button>
+
+                        {/* Theme Toggle */}
+                        <ThemeToggle />
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <button
-                        className="mobile-menu-btn md:hidden"
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <div className={`hamburger ${mobileMenuOpen ? "open" : ""}`}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </button>
+                    <div className="flex items-center gap-2 md:hidden">
+                        <ThemeToggle />
+                        <button
+                            className="mobile-menu-btn"
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            aria-label="Toggle menu"
+                        >
+                            <div className={`hamburger ${mobileMenuOpen ? "open" : ""}`}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </nav>
 

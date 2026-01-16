@@ -125,8 +125,8 @@ export default function Home() {
                             <span
                                 key={i}
                                 className={`hero-word inline-block mr-4 ${word === "thermal" || word === "excellence"
-                                        ? "gradient-text"
-                                        : ""
+                                    ? "gradient-text"
+                                    : ""
                                     }`}
                             >
                                 {word}
@@ -135,31 +135,10 @@ export default function Home() {
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="hero-subtitle text-body-lg text-[var(--noda-gray-300)] max-w-xl mb-10">
+                    <p className="hero-subtitle text-body-lg text-[var(--noda-gray-300)] max-w-xl">
                         AI-driven energy management solutions for smart heating and cooling.
                         Unmatched precision and control for a sustainable future.
                     </p>
-
-                    {/* CTAs */}
-                    <div className="flex flex-wrap gap-4">
-                        <Button asChild size="lg" className="hero-cta">
-                            <Link href="/product">
-                                Explore CoPilot
-                            </Link>
-                        </Button>
-                        <Button asChild variant="outline" size="lg" className="hero-cta">
-                            <Link href="/success-stories">
-                                View Case Studies
-                            </Link>
-                        </Button>
-                    </div>
-
-                    {/* Scroll Indicator */}
-                    <div className="scroll-indicator absolute bottom-12 left-1/2 -translate-x-1/2">
-                        <div className="w-6 h-10 rounded-full border border-[var(--noda-gray-500)] flex justify-center pt-2">
-                            <div className="w-1 h-2 rounded-full bg-[var(--noda-gray-400)] animate-bounce" />
-                        </div>
-                    </div>
                 </div>
             </section>
 

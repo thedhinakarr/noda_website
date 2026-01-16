@@ -185,6 +185,61 @@
     --content-max-width: 1200px;
 }
 
+/* ============================================================================
+   LIGHT MODE
+   ============================================================================ */
+html.light {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 342 70% 38%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 15%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84% 60%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 342 70% 38%;
+
+    /* NODA Light Palette - inverted for light backgrounds */
+    --noda-black: #FAFAFA;
+    --noda-dark-1: #F5F5F5;
+    --noda-dark-2: #FFFFFF;
+    --noda-dark-3: #F5F5F5;
+    --noda-dark-4: #E5E5E5;
+
+    /* NODA Gray Scale (darker for light mode readability) */
+    --noda-gray-200: #171717;
+    --noda-gray-300: #404040;
+    --noda-gray-400: #525252;
+    --noda-gray-500: #737373;
+
+    /* Text Colors */
+    --noda-white: #171717;
+    --noda-border: #E5E5E5;
+
+    /* Burgundy adjustments for light mode */
+    --noda-burgundy: #A51C47;
+    --noda-burgundy-light: #C4325E;
+    --noda-burgundy-dark: #7D1636;
+}
+
+/* Light mode text color override - make text-white adapt */
+html.light .text-white {
+    color: #171717 !important;
+}
+
+html.light .text-\[var\(--noda-white\)\] {
+    color: #171717 !important;
+}
+
 * {
     border-color: hsl(var(--border));
 }

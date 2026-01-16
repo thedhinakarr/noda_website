@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Stats Section with GSAP Counter Animation
+ * Stats Section with Counter Animation
  */
 export function StatsSection() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -20,33 +20,39 @@ export function StatsSection() {
         { value: 3, suffix: "MT", label: "CO₂ Reduced Annually" },
     ];
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            // Fade in stats
-            gsap.from(".stat-item", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 80%",
-                },
-                y: 40,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: "power2.out",
+            // Fade in stats with fromTo for reliability
+            const statItems = document.querySelectorAll(".stat-item");
+            statItems.forEach((item, i) => {
+                gsap.fromTo(item,
+                    { y: 30, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: i * 0.1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 90%",
+                        },
+                    }
+                );
             });
 
             // Counter animation
             stats.forEach((stat, index) => {
                 const counter = { value: 0 };
                 gsap.to(counter, {
+                    value: stat.value,
+                    duration: 2,
+                    delay: 0.3 + index * 0.1,
+                    ease: "power2.out",
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: "top 80%",
                     },
-                    value: stat.value,
-                    duration: 2,
-                    delay: index * 0.1,
-                    ease: "power2.out",
                     onUpdate: () => {
                         const el = document.getElementById(`stat-${index}`);
                         if (el) {
@@ -61,9 +67,9 @@ export function StatsSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-[var(--noda-dark-1)] border-y border-[var(--noda-dark-4)]">
+        <section ref={sectionRef} className="py-20 bg-[var(--noda-dark-1)] border-y border-[var(--noda-dark-4)]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     {stats.map((stat, index) => (
                         <Card key={index} className="stat-item text-center bg-transparent border-0">
                             <CardContent className="p-0">
@@ -90,8 +96,8 @@ export function PartnersMarquee() {
     ];
 
     return (
-        <section className="py-16 bg-[var(--noda-black)] overflow-hidden">
-            <div className="mb-8 text-center">
+        <section className="py-12 bg-[var(--noda-black)] overflow-hidden">
+            <div className="mb-6 text-center">
                 <p className="text-label text-[var(--noda-gray-400)]">
                     Trusted by Industry Leaders
                 </p>
