@@ -145,7 +145,7 @@ export default function ResourcesPage() {
                             <div>
                                 <p className="text-label text-[var(--noda-gray-400)] mb-2">{t("resourcesPage.contact.headquarters")}</p>
                                 <div className="text-white">
-                                    {t("resourcesPage.contact.location").split(', ').map((line, i) => (
+                                    {(t("resourcesPage.contact.location") as string).split(', ').map((line, i) => (
                                         <div key={i}>{line}</div>
                                     ))}
                                 </div>
