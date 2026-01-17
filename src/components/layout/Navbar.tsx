@@ -54,7 +54,7 @@ export function Navbar() {
                     {/* RIGHT SIDE: Navigation + Actions */}
                     <div className="flex items-center gap-8">
                         {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center gap-8">
+                        <div className="hidden lg:flex items-center gap-8">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
@@ -65,14 +65,14 @@ export function Navbar() {
                                 </Link>
                             ))}
 
-                            <Button asChild variant="ghost" className="nav-link nav-link-external p-0 h-auto opacity-70 hover:opacity-100">
+                            <Button asChild variant="ghost" className="p-0 h-auto font-medium text-[var(--noda-text-primary)] hover:text-[var(--noda-burgundy)] hover:bg-transparent transition-colors">
                                 <a
                                     href="https://accounts.noda.se/trust/module.php/core/loginuserpass.php?AuthState=_a41c51b819c572b4172a26a35a15db4ad78b210d71%3Ahttps%3A%2F%2Faccounts.noda.se%2Ftrust%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fmypages.noda.se%26RelayState%3D%252F%26cookieTime%3D1768589278"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     {t("nav.portal")}
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <svg className="ml-2 w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                                         <path d="M7 17L17 7M17 7H7M17 7V17" />
                                     </svg>
                                 </a>
@@ -83,7 +83,7 @@ export function Navbar() {
                         </div>
 
                         {/* Mobile Menu Button (Visible on mobile only) */}
-                        <div className="flex items-center gap-2 md:hidden">
+                        <div className="flex items-center gap-2 lg:hidden">
                             <LanguageToggle />
                             <ThemeToggle />
                             <button

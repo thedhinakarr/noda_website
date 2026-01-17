@@ -49,7 +49,7 @@ export function Testimonials() {
     }, [testimonials]);
 
     return (
-        <section ref={sectionRef} className="py-20 bg-[var(--noda-dark-1)]">
+        <section ref={sectionRef} className="py-20 bg-[var(--noda-bg-secondary)]">
             <div className="max-w-3xl mx-auto px-6 lg:px-12">
                 <div className="testimonials-container text-center">
                     {/* Quote Icon */}
@@ -69,7 +69,7 @@ export function Testimonials() {
                                     : "opacity-0 translate-y-4"
                                     }`}
                             >
-                                <p className="text-lg md:text-2xl text-[var(--noda-white)] font-light leading-relaxed">
+                                <p className="text-lg md:text-2xl text-[var(--noda-text-primary)] font-light leading-relaxed">
                                     "{testimonial.quote}"
                                 </p>
                             </blockquote>
@@ -78,10 +78,10 @@ export function Testimonials() {
 
                     {/* Author */}
                     <div className="mb-8">
-                        <p className="text-[var(--noda-gray-200)] font-medium">
+                        <p className="text-[var(--noda-text-primary)] font-medium">
                             {testimonials[activeIndex].author}
                         </p>
-                        <p className="text-[var(--noda-gray-400)] text-sm">
+                        <p className="text-[var(--noda-text-muted)] text-sm">
                             {testimonials[activeIndex].company}
                         </p>
                     </div>
@@ -96,7 +96,7 @@ export function Testimonials() {
                                 size="icon"
                                 className={`w-2 h-2 rounded-full p-0 min-w-0 transition-all duration-300 ${index === activeIndex
                                     ? "bg-[var(--noda-burgundy)] w-6"
-                                    : "bg-[var(--noda-dark-4)] hover:bg-[var(--noda-gray-400)]"
+                                    : "bg-[var(--noda-border-color)] hover:bg-[var(--noda-text-secondary)]"
                                     }`}
                             />
                         ))}

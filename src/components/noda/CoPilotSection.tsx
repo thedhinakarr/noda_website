@@ -63,7 +63,7 @@ export function CoPilotSection() {
         <section
             ref={sectionRef}
             id="product"
-            className="py-24 bg-[var(--noda-black)] relative overflow-hidden"
+            className="py-24 bg-[var(--noda-bg-primary)] relative overflow-hidden"
         >
             {/* Accent glow */}
             <div className="absolute top-1/2 -right-[20%] w-[40%] aspect-square bg-[var(--noda-burgundy)]/10 rounded-full blur-[150px]" />
@@ -76,21 +76,21 @@ export function CoPilotSection() {
                             {t("copilot.new")}
                         </Badge>
 
-                        <h2 className="text-h1 text-[var(--noda-white)] mb-4">
+                        <h2 className="text-h1 text-[var(--noda-text-primary)] mb-4">
                             {t("copilot.title")}
                         </h2>
 
-                        <p className="text-h3 text-[var(--noda-gray-200)] font-light mb-4">
+                        <p className="text-h3 text-[var(--noda-text-secondary)] font-light mb-4">
                             {t("copilot.subtitle")}
                         </p>
 
-                        <p className="text-body-lg text-[var(--noda-gray-300)] mb-8 leading-relaxed max-w-lg">
+                        <p className="text-body-lg text-[var(--noda-text-muted)] mb-8 leading-relaxed max-w-lg">
                             {t("copilot.desc")}
                         </p>
 
                         <ul className="space-y-3 mb-8">
                             {Array.isArray(features) && features.map((feature, i) => (
-                                <li key={i} className="flex items-center gap-3 text-[var(--noda-gray-200)]">
+                                <li key={i} className="flex items-center gap-3 text-[var(--noda-text-secondary)]">
                                     <div className="w-1.5 h-1.5 rounded-full bg-[var(--noda-burgundy)]" />
                                     <span className="text-body">{feature}</span>
                                 </li>
@@ -107,16 +107,16 @@ export function CoPilotSection() {
 
                     {/* Visual */}
                     <div className="product-visual relative">
-                        <Card className="bg-[var(--noda-dark-2)] border-[var(--noda-dark-4)] overflow-hidden">
+                        <Card className="bg-[var(--noda-bg-surface)] border-[var(--noda-border-color)] overflow-hidden">
                             <CardContent className="p-0">
                                 {/* Fake Dashboard UI */}
-                                <div className="p-5 border-b border-[var(--noda-dark-4)]">
+                                <div className="p-5 border-b border-[var(--noda-border-color)]">
                                     <div className="flex gap-2 mb-3">
                                         <div className="w-3 h-3 rounded-full bg-[var(--noda-burgundy)]/60" />
                                         <div className="w-3 h-3 rounded-full bg-amber-400/60" />
                                         <div className="w-3 h-3 rounded-full bg-emerald-400/60" />
                                     </div>
-                                    <div className="h-2 w-32 bg-[var(--noda-dark-4)] rounded" />
+                                    <div className="h-2 w-32 bg-[var(--noda-border-color)] rounded" />
                                 </div>
 
                                 <div className="p-5 space-y-5">
@@ -127,16 +127,16 @@ export function CoPilotSection() {
                                             { label: t("copilot.metrics.savings"), value: "€24K", trend: "+12%" },
                                             { label: t("copilot.metrics.co2"), value: "18T", trend: "+8.4%" },
                                         ].map((metric, i) => (
-                                            <div key={i} className="p-3 bg-[var(--noda-dark-3)] rounded-lg">
-                                                <p className="text-xs text-[var(--noda-gray-400)] mb-1">{metric.label}</p>
-                                                <p className="text-lg font-light text-[var(--noda-white)]">{metric.value}</p>
+                                            <div key={i} className="p-3 bg-[var(--noda-bg-elevated)] rounded-lg">
+                                                <p className="text-xs text-[var(--noda-text-muted)] mb-1">{metric.label}</p>
+                                                <p className="text-lg font-light text-[var(--noda-text-primary)]">{metric.value}</p>
                                                 <p className="text-xs text-emerald-400 mt-1">{metric.trend}</p>
                                             </div>
                                         ))}
                                     </div>
 
                                     {/* Chart Placeholder */}
-                                    <div className="h-32 bg-[var(--noda-dark-3)] rounded-lg p-3">
+                                    <div className="h-32 bg-[var(--noda-bg-elevated)] rounded-lg p-3">
                                         <div className="flex items-end justify-around h-full gap-1">
                                             {[35, 55, 40, 70, 50, 80, 65, 90, 75, 85, 95, 80].map((h, i) => (
                                                 <div

@@ -41,7 +41,7 @@ export function LanguageToggle() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-9 h-9 font-medium text-sm transition-colors hover:text-[var(--noda-white)]"
+                className="w-9 h-9 font-medium text-sm transition-colors hover:text-[var(--noda-text-primary)]"
                 aria-label="Select language"
             >
                 {activeLanguage.label}

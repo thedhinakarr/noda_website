@@ -1,192 +1,114 @@
 "use client";
 
-import { Navbar, Footer } from "@/components/layout";
-import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "@/context/LanguageContext";
-
-// Import NODA components
-import { StatsSection, PartnersMarquee } from "@/components/noda/StatsSection";
-import { WhatWeDo } from "@/components/noda/WhatWeDo";
-import { ApplicationAreas } from "@/components/noda/ApplicationAreas";
-import { CustomerSegments } from "@/components/noda/CustomerSegments";
-import { Testimonials } from "@/components/noda/Testimonials";
-import { VisionSection } from "@/components/noda/VisionSection";
-import { CoPilotSection } from "@/components/noda/CoPilotSection";
+import { Navbar, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
+
+// Components
+import { MeetCopilot } from "@/components/noda/MeetCopilot";
+import { StatsSection } from "@/components/noda/StatsSection";
+import { PartnersMarquee } from "@/components/noda/PartnersMarquee";
+import { VisionSection } from "@/components/noda/VisionSection";
+import { ApplicationAreas } from "@/components/noda/ApplicationAreas";
+import { WhatWeDo } from "@/components/noda/WhatWeDo";
+import { PatentedSoftware } from "@/components/noda/PatentedSoftware";
+import { Testimonials } from "@/components/noda/Testimonials";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
     const { t } = useLanguage();
-    const heroRef = useRef<HTMLElement>(null);
-
-    // Get title parts from translation - cast as any to handle the array return type
-    const titleParts = t("hero.titleParts") as any as Array<{ text: string, highlight?: boolean }>;
+    const heroRef = useRef<HTMLDivElement>(null);
+    const pageRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            // Hero entrance animation
-            const tl = gsap.timeline({
-                defaults: { ease: "power3.out" }
+            // Hero Animations
+            gsap.from(".container > div > *", {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out",
+                delay: 0.2,
             });
-
-            tl
-                // Background fade
-                .from(".hero-bg-gradient", {
-                    opacity: 0,
-                    scale: 1.05,
-                    duration: 1.2,
-                })
-                // Label
-                .from(".hero-label", {
-                    y: 20,
-                    opacity: 0,
-                    duration: 0.6,
-                }, "-=0.6")
-                // Title words stagger
-                .from(".hero-word", {
-                    y: 60,
-                    opacity: 0,
-                    duration: 0.8,
-                    stagger: 0.1,
-                }, "-=0.4")
-                // Subtitle
-                .from(".hero-subtitle", {
-                    y: 30,
-                    opacity: 0,
-                    duration: 0.6,
-                }, "-=0.4")
-                // CTA buttons
-                .from(".hero-cta", {
-                    y: 20,
-                    opacity: 0,
-                    stagger: 0.15,
-                    duration: 0.5,
-                }, "-=0.3")
-                // Scroll indicator
-                .from(".scroll-indicator", {
-                    opacity: 0,
-                    y: -20,
-                    duration: 0.6,
-                }, "-=0.2");
-
-            // Floating animation for decorative elements
-            gsap.to(".float-orb", {
-                y: "random(-30, 30)",
-                x: "random(-20, 20)",
-                duration: "random(4, 6)",
-                ease: "sine.inOut",
-                repeat: -1,
-                yoyo: true,
-                stagger: {
-                    each: 1,
-                    from: "random",
-                },
-            });
-        }, heroRef);
+        }, pageRef);
 
         return () => ctx.revert();
-    }, [titleParts]); // Re-run animation when language changes
+    }, []);
 
     return (
-        <>
+        <div ref={pageRef} className="bg-[var(--noda-bg-primary)] min-h-screen">
             <Navbar />
 
-            {/* Hero Section - GSAP Animated */}
-            <section ref={heroRef} className="hero relative" style={{ alignItems: "flex-start" }}>
-                {/* Animated Background */}
-                <div className="hero-bg">
-                    <div
-                        className="hero-bg-gradient w-full h-full"
-                        style={{
-                            background: "radial-gradient(ellipse at 30% 20%, hsl(var(--noda-burgundy) / 0.15) 0%, transparent 50%), linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--noda-dark-1)) 100%)",
-                        }}
-                    />
-                </div>
+            <main>
+                {/* 1. Hero Section */}
+                <section ref={heroRef} className="relative min-h-[85vh] flex flex-col justify-start pt-24 md:pt-32 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--noda-bg-primary)]/90 via-[var(--noda-bg-primary)]/70 to-transparent z-0" />
 
-                {/* Floating Orbs */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="float-orb absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-[var(--noda-burgundy)]/10 to-transparent blur-3xl" />
-                    <div className="float-orb absolute bottom-1/3 left-1/5 w-64 h-64 rounded-full bg-gradient-to-br from-[var(--noda-burgundy)]/5 to-transparent blur-3xl" />
-                </div>
+                    {/* Animated Grid Background */}
+                    <div className="absolute inset-0 grid-pattern opacity-[0.15] z-0" />
 
-                <div className="hero-overlay" />
+                    <div className="container relative z-10 px-6">
+                        <div className="max-w-4xl mr-auto text-left">
 
-                <div className="hero-content container relative z-10 pt-32 lg:pt-48 pb-12 lg:pb-20">
-                    {/* Label */}
-                    <p className="hero-label text-label text-[var(--noda-burgundy)] mb-6">
-                        {t("hero.label")}
-                    </p>
+                            {/* Statement Headline */}
+                            <p className="text-sm font-medium text-[var(--noda-burgundy)] mb-6 tracking-wide uppercase">{t("hero.label")}</p>
+                            <h1 className="text-6xl md:text-8xl lg:text-9xl font-medium text-[var(--noda-text-primary)] leading-[0.95] tracking-tight mb-10">
+                                {(t("hero.titleParts") as any[]).map((part, i) => (
+                                    <span key={i} className={part.highlight ? "text-[var(--noda-burgundy)]" : ""}>
+                                        {part.text}{" "}
+                                    </span>
+                                ))}
+                            </h1>
 
-                    {/* Animated Title */}
-                    <h1 className="heading-display hero-title max-w-4xl mb-8">
-                        {Array.isArray(titleParts) && titleParts.map((part, i) => (
-                            <span
-                                key={i}
-                                className={`hero-word inline-block mr-4 ${part.highlight ? "gradient-text" : ""}`}
-                            >
-                                {part.text}
-                            </span>
-                        ))}
-                    </h1>
-
-                    {/* Subtitle */}
-                    <p className="hero-subtitle text-body-lg text-[var(--noda-gray-500)] max-w-xl">
-                        {t("hero.subtitle")}
-                    </p>
-                </div>
-            </section>
-
-            {/* Stats Section with Counter Animation */}
-            <StatsSection />
-
-            {/* Vision Statement */}
-            <VisionSection />
-
-            {/* What We Do */}
-            <WhatWeDo />
-
-            {/* CoPilot Feature Section */}
-            <CoPilotSection />
-
-            {/* Application Areas */}
-            <ApplicationAreas />
-
-            {/* Customer Segments / Success Stories */}
-            <CustomerSegments />
-
-            {/* Testimonials */}
-            <Testimonials />
-
-            {/* Partners */}
-            <PartnersMarquee />
-
-            {/* CTA Section */}
-            <section className="py-32 bg-[var(--noda-dark-1)] text-center">
-                <div className="container">
-                    <h2 className="text-h1 text-white mb-6">{t("cta.title")}</h2>
-                    <p className="text-body-lg text-[var(--noda-gray-300)] max-w-lg mx-auto mb-10">
-                        {t("cta.subtitle")}
-                    </p>
-                    <div className="flex gap-4 justify-center">
-                        <Button asChild size="lg">
-                            <Link href="/resources">
-                                {t("cta.getInTouch")}
-                            </Link>
-                        </Button>
-                        <Button asChild variant="outline" size="lg">
-                            <Link href="/product">
-                                {t("cta.learnMore")}
-                            </Link>
-                        </Button>
+                            <p className="text-xl md:text-2xl text-[var(--noda-text-muted)] mt-12 max-w-xl leading-relaxed font-light">
+                                {t("hero.subtitle")}
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </section>
+
+                    {/* Scroll Indicator */}
+                    <div className="absolute bottom-10 left-10 animate-bounce">
+                        <svg className="w-8 h-8 text-[var(--noda-text-muted)] opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </div>
+                </section>
+
+                {/* 2. Meet Copilot */}
+                <MeetCopilot />
+
+                {/* 3. Stats */}
+                <StatsSection />
+
+                {/* 4. Who all are using (Conveyor Belt) */}
+                <PartnersMarquee />
+
+                {/* 5. Vision */}
+                <VisionSection />
+
+                {/* 6. Our Patented Software */}
+                <PatentedSoftware />
+
+                {/* 7. What We Do */}
+                <WhatWeDo />
+
+
+
+                {/* 9. Reviews */}
+                <Testimonials />
+
+                {/* 9. Application Areas (Moved to end) */}
+                <ApplicationAreas />
+
+            </main>
 
             <Footer />
-        </>
+        </div>
     );
 }

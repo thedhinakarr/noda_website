@@ -74,15 +74,15 @@ export function CustomerSegments() {
     }, [translatedSegments]);
 
     return (
-        <section ref={sectionRef} id="success" className="py-24 bg-[var(--noda-black)]">
+        <section ref={sectionRef} id="success" className="py-24 bg-[var(--noda-bg-primary)]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 {/* Header */}
                 <div className="segments-header text-center mb-12">
                     <p className="text-label text-[var(--noda-burgundy)] mb-3">{t("customerSegments.label")}</p>
-                    <h2 className="text-h1 text-[var(--noda-white)] mb-4">
+                    <h2 className="text-h1 text-[var(--noda-text-primary)] mb-4">
                         {t("customerSegments.title")}
                     </h2>
-                    <p className="text-body-lg text-[var(--noda-gray-300)] max-w-xl mx-auto">
+                    <p className="text-body-lg text-[var(--noda-text-muted)] max-w-xl mx-auto">
                         {t("customerSegments.desc")}
                     </p>
                 </div>

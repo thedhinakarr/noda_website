@@ -39,7 +39,7 @@ export function Footer() {
                                 alt="NODA"
                                 width={100}
                                 height={26}
-                                className="h-7 w-auto"
+                                className="h-15 w-auto"
                             />
                         </div>
                         <p className="text-small text-muted" style={{ maxWidth: "280px" }}>
@@ -86,7 +86,7 @@ export function Footer() {
 
                 <div className="footer-bottom">
                     <span>© {year} NODA Intelligent Systems AB</span>
-                    <span>Karlshamn, Sweden</span>
+                    <span>{t("footer.location")}</span>
                 </div>
             </div>
         </footer>

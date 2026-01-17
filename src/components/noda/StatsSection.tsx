@@ -69,13 +69,13 @@ export function StatsSection() {
     }, [stats]); // Update when stats (labels) change
 
     return (
-        <section ref={sectionRef} className="py-20 bg-[var(--noda-dark-1)] border-y border-[var(--noda-dark-4)]">
+        <section ref={sectionRef} className="py-20 bg-[var(--noda-bg-secondary)] border-y border-[var(--noda-border-color)]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12">
                     {stats.map((stat, index) => (
                         <Card key={index} className="stat-item text-center bg-transparent border-0">
                             <CardContent className="p-0">
-                                <div id={`stat-${index}`} className="stat-value text-[var(--noda-white)]">
+                                <div id={`stat-${index}`} className="stat-value text-[var(--noda-text-primary)]">
                                     0{stat.suffix}
                                 </div>
                                 <p className="stat-label">{stat.label}</p>
@@ -88,36 +88,4 @@ export function StatsSection() {
     );
 }
 
-/**
- * Partner Logos Marquee
- */
-export function PartnersMarquee() {
-    const { t } = useLanguage();
-    const partners = [
-        "VEOLIA", "DAIMLER", "ENGIE", "SIEMENS",
-        "SCHNEIDER", "ABB", "VATTENFALL", "E.ON"
-    ];
 
-    return (
-        <section className="py-12 bg-[var(--noda-black)] overflow-hidden">
-            <div className="mb-6 text-center">
-                <p className="text-label text-[var(--noda-gray-400)]">
-                    {t("stats.trustedBy")}
-                </p>
-            </div>
-
-            <div className="marquee-container">
-                <div className="marquee">
-                    {[...partners, ...partners].map((partner, i) => (
-                        <span
-                            key={i}
-                            className="text-2xl font-light text-[var(--noda-gray-300)] hover:text-[var(--noda-gray-200)] transition-colors duration-300 whitespace-nowrap"
-                        >
-                            {partner}
-                        </span>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
