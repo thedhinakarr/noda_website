@@ -190,7 +190,7 @@ export default function ProductPage() {
                             </div>
                         </div>
                         <div
-                            className="relative aspect-[16/10] bg-[var(--noda-bg-surface)] border border-[var(--noda-border-color)] rounded-xl overflow-hidden shadow-2xl cursor-zoom-in group"
+                            className="relative aspect-[16/10] bg-[var(--noda-bg-surface)] border border-[var(--noda-border-color)] rounded-sm overflow-hidden shadow-none cursor-zoom-in group"
                             onClick={() => setIsLightboxOpen(true)}
                         >
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10 flex items-center justify-center">
@@ -223,7 +223,7 @@ export default function ProductPage() {
                                     </svg>
                                 </button>
                                 <div
-                                    className="relative w-full max-w-7xl h-auto max-h-[90vh] aspect-[16/9] rounded-lg overflow-hidden shadow-2xl"
+                                    className="relative w-full max-w-7xl h-auto max-h-[90vh] aspect-[16/9] rounded-sm overflow-hidden shadow-2xl"
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     <Image

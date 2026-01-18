@@ -76,6 +76,7 @@ export const translations = {
             ],
             label: "Our Vision",
             mainText: "Global energy demand is projected to increase by 21% by 2040. We believe the answer lies not in producing more energy, but in using what we have more intelligently.",
+            subText: "We empower energy companies to create intelligent, self-optimizing networks.",
             title: "We are dedicated to thermal excellence",
             cards: {
                 efficiency: { title: "Efficiency First", desc: "Maximize output, minimize waste" },

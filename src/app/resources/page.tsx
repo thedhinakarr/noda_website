@@ -355,16 +355,16 @@ export default function ResourcesPage() {
 
 function ResourceCard({ title, desc, icon, type = "link", link, items, itemIcon = "download" }: any) {
     return (
-        <div className="resource-card relative p-8 border border-[var(--noda-border-color)] bg-[var(--noda-bg-surface)] transition-all duration-300 flex flex-col items-start h-full">
+        <div className="resource-card relative p-8 border border-[var(--noda-border-color)] bg-[var(--noda-bg-surface)] rounded-sm transition-all duration-300 flex flex-col items-start h-full hover:border-[var(--noda-burgundy)]/40">
             <div className="mb-6 text-[var(--noda-burgundy)]">
-                <div className="w-10 h-10">{icon}</div>
+                <div className="w-10 h-10 rounded-sm bg-[var(--noda-burgundy)]/5 flex items-center justify-center">{icon}</div>
             </div>
 
-            <h3 className="text-2xl font-light text-[var(--noda-text-primary)] mb-3">
+            <h3 className="font-mono text-lg text-[var(--noda-text-primary)] mb-3 uppercase tracking-wide">
                 {title}
             </h3>
 
-            <p className="text-[var(--noda-text-muted)] mb-8 flex-grow leading-relaxed">
+            <p className="text-[var(--noda-text-muted)] text-sm mb-8 flex-grow leading-relaxed">
                 {desc}
             </p>
 

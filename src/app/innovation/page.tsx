@@ -118,7 +118,7 @@ export default function InnovationPage() {
 
                     <ScrollReveal className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" stagger={0.1}>
                         {projects.map((project, i) => (
-                            <div key={i} className="group flex flex-col p-8 border border-[var(--noda-border-color)] bg-[var(--noda-bg-surface)] hover:border-[var(--noda-burgundy)] transition-colors duration-300">
+                            <div key={i} className="group flex flex-col p-8 border border-[var(--noda-border-color)] bg-[var(--noda-bg-surface)] hover:border-[var(--noda-burgundy)]/40 transition-colors duration-300 rounded-sm">
                                 <span className="text-xs uppercase tracking-widest text-[var(--noda-burgundy)] mb-4 font-mono truncate">
                                     {project.focus}
                                 </span>
@@ -152,7 +152,7 @@ export default function InnovationPage() {
 
                     <ScrollReveal className="grid md:grid-cols-3 gap-6" stagger={0.2}>
                         {(t("innovationPage.featuredExperts.experts") as any[]).map((expert, i) => (
-                            <div key={i} className="group relative aspect-[3/4] overflow-hidden bg-[var(--noda-gray-200)]">
+                            <div key={i} className="group relative aspect-[3/4] overflow-hidden bg-[var(--noda-gray-200)] rounded-sm">
                                 {/* Image */}
                                 <Image
                                     src={expert.image}
@@ -182,13 +182,13 @@ export default function InnovationPage() {
                     <h2 className="text-h1 text-[var(--noda-text-primary)] text-center mb-16">{t("innovationPage.values.title")}</h2>
                     <ScrollReveal className="grid md:grid-cols-3 gap-8" stagger={0.15}>
                         {goals.map((goal, i) => (
-                            <div key={i} className="group relative p-8 border border-[var(--noda-border-color)] bg-[var(--noda-bg-surface)] hover:border-[var(--noda-burgundy)]/50 transition-all duration-300 flex flex-col h-full rounded-none">
-                                <div className="mb-6 text-[var(--noda-burgundy)] group-hover:scale-110 transition-transform duration-300">
-                                    <div className="w-10 h-10">
+                            <div key={i} className="group relative p-8 border border-[var(--noda-border-color)] bg-[var(--noda-bg-surface)] hover:border-[var(--noda-burgundy)]/40 transition-all duration-300 flex flex-col h-full rounded-sm">
+                                <div className="mb-6 text-[var(--noda-burgundy)] group-hover:scale-105 transition-transform duration-300">
+                                    <div className="w-10 h-10 rounded-sm bg-[var(--noda-burgundy)]/5 flex items-center justify-center">
                                         {goal.icon}
                                     </div>
                                 </div>
-                                <h3 className="text-2xl font-light text-[var(--noda-text-primary)] mb-4 group-hover:text-[var(--noda-burgundy)] transition-colors">
+                                <h3 className="font-mono text-lg text-[var(--noda-text-primary)] mb-4 uppercase tracking-wide group-hover:text-[var(--noda-burgundy)] transition-colors">
                                     {goal.title}
                                 </h3>
                                 <p className="text-[var(--noda-text-muted)] leading-relaxed">

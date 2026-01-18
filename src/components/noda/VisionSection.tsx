@@ -60,28 +60,28 @@ export function VisionSection() {
                             {t("vision.subText")}
                         </p>
 
-                        <div className="grid grid-cols-2 gap-4 pl-8">
-                            <Card className="bg-[var(--noda-bg-surface)] border-[var(--noda-border-color)]">
-                                <CardContent className="p-4">
-                                    <div className="w-9 h-9 rounded-lg bg-[var(--noda-burgundy)]/10 flex items-center justify-center mb-3">
+                        <div className="grid grid-cols-2 gap-4 pl-4 lg:pl-8">
+                            <Card className="bg-[var(--noda-bg-surface)] border-[var(--noda-border-color)] rounded-sm shadow-none hover:border-[var(--noda-burgundy)]/40 transition-colors duration-300">
+                                <CardContent className="p-5">
+                                    <div className="w-9 h-9 rounded-sm bg-[var(--noda-burgundy)]/10 flex items-center justify-center mb-4">
                                         <svg className="w-4 h-4 text-[var(--noda-burgundy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                         </svg>
                                     </div>
-                                    <p className="font-medium text-[var(--noda-text-primary)] text-sm mb-1">{t("vision.cards.efficiency.title")}</p>
-                                    <p className="text-xs text-[var(--noda-text-muted)]">{t("vision.cards.efficiency.desc")}</p>
+                                    <p className="font-mono text-[var(--noda-text-primary)] text-sm mb-2 uppercase tracking-wide">{t("vision.cards.efficiency.title")}</p>
+                                    <p className="text-xs text-[var(--noda-text-muted)] leading-relaxed">{t("vision.cards.efficiency.desc")}</p>
                                 </CardContent>
                             </Card>
 
-                            <Card className="bg-[var(--noda-bg-surface)] border-[var(--noda-border-color)]">
-                                <CardContent className="p-4">
-                                    <div className="w-9 h-9 rounded-lg bg-[var(--noda-burgundy)]/10 flex items-center justify-center mb-3">
+                            <Card className="bg-[var(--noda-bg-surface)] border-[var(--noda-border-color)] rounded-sm shadow-none hover:border-[var(--noda-burgundy)]/40 transition-colors duration-300">
+                                <CardContent className="p-5">
+                                    <div className="w-9 h-9 rounded-sm bg-[var(--noda-burgundy)]/10 flex items-center justify-center mb-4">
                                         <svg className="w-4 h-4 text-[var(--noda-burgundy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
                                         </svg>
                                     </div>
-                                    <p className="font-medium text-[var(--noda-text-primary)] text-sm mb-1">{t("vision.cards.impact.title")}</p>
-                                    <p className="text-xs text-[var(--noda-text-muted)]">{t("vision.cards.impact.desc")}</p>
+                                    <p className="font-mono text-[var(--noda-text-primary)] text-sm mb-2 uppercase tracking-wide">{t("vision.cards.impact.title")}</p>
+                                    <p className="text-xs text-[var(--noda-text-muted)] leading-relaxed">{t("vision.cards.impact.desc")}</p>
                                 </CardContent>
                             </Card>
                         </div>
