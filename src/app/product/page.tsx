@@ -8,6 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 import { PartnersMarquee } from "@/components/noda/PartnersMarquee";
 import { Button } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export default function ProductPage() {
     const { t } = useLanguage();
@@ -57,13 +58,15 @@ export default function ProductPage() {
 
                 <div className="container relative z-10 px-6">
                     <div className="max-w-4xl mr-auto text-left">
-                        <p className="text-sm font-medium text-[var(--noda-burgundy)] mb-6 tracking-wide uppercase">{t("productPage.hero.label")}</p>
-                        <h1 className="text-6xl md:text-8xl font-medium text-[var(--noda-text-primary)] mb-8 leading-[0.95] tracking-tight">
-                            {t("productPage.hero.titlePrefix")}<span className="text-[var(--noda-burgundy)]">{t("productPage.hero.titleHighlight")}</span>
-                        </h1>
-                        <p className="text-xl md:text-2xl text-[var(--noda-text-muted)] max-w-xl mt-10 leading-relaxed font-light">
-                            {t("productPage.hero.desc")}
-                        </p>
+                        <ScrollReveal>
+                            <p className="text-sm font-medium text-[var(--noda-burgundy)] mb-6 tracking-wide uppercase">{t("productPage.hero.label")}</p>
+                            <h1 className="text-6xl md:text-8xl font-medium text-[var(--noda-text-primary)] mb-8 leading-[0.95] tracking-tight">
+                                {t("productPage.hero.titlePrefix")}<span className="text-[var(--noda-burgundy)]">{t("productPage.hero.titleHighlight")}</span>
+                            </h1>
+                            <p className="text-xl md:text-2xl text-[var(--noda-text-muted)] max-w-xl mt-10 leading-relaxed font-light">
+                                {t("productPage.hero.desc")}
+                            </p>
+                        </ScrollReveal>
                     </div>
                 </div>
             </section>
@@ -71,7 +74,7 @@ export default function ProductPage() {
             {/* 2. Impact as a Service */}
             <section className="py-32">
                 <div className="container">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                    <ScrollReveal className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                         <div>
                             <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("productPage.impactService.label")}</span>
                             <h2 className="text-h1 text-[var(--noda-text-primary)] mb-6">{t("productPage.impactService.title")}</h2>
@@ -82,43 +85,43 @@ export default function ProductPage() {
                                 {t("productPage.impactService.desc2")}
                             </p>
                         </div>
-                        <div className="relative aspect-square md:aspect-[4/3] bg-[var(--noda-bg-surface)] border border-[var(--noda-border-color)] p-12 flex flex-col items-center justify-center gap-12 group hover:border-[var(--noda-burgundy)]/30 transition-colors duration-500 overflow-hidden">
+                        <div className="relative aspect-auto min-h-[300px] md:aspect-[4/3] bg-[var(--noda-bg-surface)] border border-[var(--noda-border-color)] p-8 md:p-12 flex flex-col items-center justify-center gap-8 md:gap-12 group hover:border-[var(--noda-burgundy)]/30 transition-colors duration-500 overflow-hidden rounded-xl">
                             {/* Background Glow Effect */}
                             <div className="absolute inset-0 bg-gradient-to-br from-[var(--noda-burgundy)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                             {/* Stamps Layout */}
                             <div className="relative z-10 text-center w-full">
-                                <p className="text-sm font-medium text-[var(--noda-burgundy)] uppercase tracking-widest mb-12">{t("productPage.impactService.stamp") || "Certified Excellence"}</p>
-                                <div className="flex flex-col md:flex-row items-center justify-center gap-16 w-full px-4">
-                                    <div className="relative w-48 h-48 transition-transform duration-500 transform group-hover:scale-105 drop-shadow-2xl">
+                                <p className="text-sm font-medium text-[var(--noda-burgundy)] uppercase tracking-widest mb-8 md:mb-12">{t("productPage.impactService.stamp") || "Certified Excellence"}</p>
+                                <div className="flex flex-row items-center justify-center gap-6 md:gap-16 w-full px-2">
+                                    <div className="relative w-32 h-32 md:w-48 md:h-48 transition-transform duration-500 transform group-hover:scale-105 drop-shadow-2xl">
                                         <Image
                                             src="/images/product/Achilles Network Stamp Member.jpg"
                                             alt={t("productPage.impactService.stamps.achilles")}
                                             fill
-                                            sizes="(max-width: 768px) 192px, 192px"
+                                            sizes="(max-width: 768px) 128px, 192px"
                                             className="object-contain rounded-xl"
                                         />
                                     </div>
-                                    <div className="relative w-48 h-48 transition-transform duration-500 transform group-hover:scale-105 drop-shadow-2xl">
+                                    <div className="relative w-32 h-32 md:w-48 md:h-48 transition-transform duration-500 transform group-hover:scale-105 drop-shadow-2xl">
                                         <Image
                                             src="/images/product/AC0815 UNCE Stamp SILVER PLUS CMYK.jpg"
                                             alt={t("productPage.impactService.stamps.unce")}
                                             fill
-                                            sizes="(max-width: 768px) 192px, 192px"
+                                            sizes="(max-width: 768px) 128px, 192px"
                                             className="object-contain rounded-xl"
                                         />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
             {/* 3. The Essence */}
             <section className="py-32 bg-[var(--noda-bg-primary)] overflow-hidden">
                 <div className="container">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <ScrollReveal className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="order-last lg:order-first relative">
                             {/* Illustration Container */}
                             <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--noda-border-color)] bg-black/5 dark:bg-white/5">
@@ -142,19 +145,19 @@ export default function ProductPage() {
                                 {t("productPage.essence.desc") || "At Noda, we believe that the future of energy is autonomous. We strip away the complexity of thermal dynamics and replace it with elegant, self-driving efficiency. This is the essence of our engineering philosophy."}
                             </p>
                         </div>
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
             {/* 4. Building Units (Grid) */}
             <section className="py-32 bg-[var(--noda-bg-surface)]">
                 <div className="container">
-                    <div className="mb-16">
+                    <ScrollReveal className="mb-16">
                         <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("productPage.buildingUnits.label") || "System Architecture"}</span>
                         <h2 className="text-h1 text-[var(--noda-text-primary)]">{t("productPage.buildingUnits.title") || "Building Units"}</h2>
-                    </div>
+                    </ScrollReveal>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--noda-border-color)] border border-[var(--noda-border-color)]">
+                    <ScrollReveal className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--noda-border-color)] border border-[var(--noda-border-color)]" stagger={0.1}>
                         {buildingUnits.map((unit: any, i: number) => (
                             <div key={i} className="bg-[var(--noda-bg-surface)] p-10 hover:bg-[var(--noda-bg-secondary)] transition-colors duration-300 group">
                                 <div className="w-12 h-12 text-[var(--noda-burgundy)] mb-8 group-hover:scale-110 transition-transform duration-300">
@@ -166,16 +169,14 @@ export default function ProductPage() {
                                 </p>
                             </div>
                         ))}
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
-
-
 
             {/* 6. Vast Value Realization */}
             <section className="py-32 bg-[var(--noda-bg-secondary)] border-t border-[var(--noda-border-color)]">
                 <div className="container">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <ScrollReveal className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
                             <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("productPage.vastValue.label") || "Value Proposition"}</span>
                             <h2 className="text-h1 text-[var(--noda-text-primary)] mb-8">{t("productPage.vastValue.title") || "Vast Value Realization"}</h2>
@@ -235,7 +236,7 @@ export default function ProductPage() {
                                 </div>
                             </div>
                         )}
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 

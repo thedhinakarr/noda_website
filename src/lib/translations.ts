@@ -456,6 +456,7 @@ export const translations = {
         },
         footer: {
             desc: "Intelligenta termiska energisystem för en hållbar framtid.",
+            location: "Karlshamn, Sverige",
             columns: {
                 product: "Produkt",
                 company: "Företag",
@@ -496,10 +497,12 @@ export const translations = {
             cards: {
                 efficiency: { title: "Effektivitet Först", desc: "Maximera output, minimera spill" },
                 impact: { title: "Global Påverkan", desc: "Koldioxidneutral framtid" }
-            }
+            },
+            title: "Vi är dedikerade till termisk excellens",
         },
         copilot: {
             new: "NYHET",
+            label: "Flaggskeppsprodukt",
             title: "Möt NODA CoPilot",
             subtitle: "Avancerad analys vid dina fingertoppar",
             desc: "En AI-driven modul designad för energi- och allmännyttiga företag. Omvandla komplex driftdata till agerbara insikter för smartare beslut inom termisk energihantering.",
@@ -509,6 +512,8 @@ export const translations = {
                 "Spårning av koldioxidavtryck",
                 "Sömlös integration"
             ],
+            explore: "Utforska CoPilot",
+            bookDemo: "Boka Demo",
             learnMore: "Läs Mer",
             metrics: {
                 efficiency: "Effektivitet",
@@ -869,6 +874,7 @@ export const translations = {
         },
         footer: {
             desc: "Intelligente termiske energisystemer for en bæredygtig fremtid.",
+            location: "Karlshamn, Sverige",
             columns: {
                 product: "Produkt",
                 company: "Virksomhed",
@@ -909,10 +915,12 @@ export const translations = {
             cards: {
                 efficiency: { title: "Effektivitet Først", desc: "Maksimér output, minimér spild" },
                 impact: { title: "Global Indflydelse", desc: "Kulstofneutral fremtid" }
-            }
+            },
+            title: "Vi er dedikerede til termisk ekspertise",
         },
         copilot: {
             new: "NYHED",
+            label: "Flagskibsprodukt",
             title: "Mød NODA CoPilot",
             subtitle: "Avanceret analyse ved dine fingerspidser",
             desc: "Et AI-drevet modul designet til energi- og forsyningsselskaber. Transformér komplekse driftsdata til handlingsrettet indsigt for smartere beslutninger inden for termisk energistyring.",
@@ -922,6 +930,8 @@ export const translations = {
                 "Sporing af CO2-aftryk",
                 "Problemfri integration"
             ],
+            explore: "Udforsk CoPilot",
+            bookDemo: "Book Demo",
             learnMore: "Læs Mere",
             metrics: {
                 efficiency: "Effektivitet",
@@ -1168,8 +1178,9 @@ export const translations = {
         resourcesPage: {
             hero: {
                 label: "RESSOURCER",
-                title: "Viden til energiomstillingen",
-                desc: "NODA blev grundlagt i 2005 som en spin-off fra det svenske akademiske miljø og demokratiserer AI til energiindustrien. Vores deeptech-løsninger gør det muligt for forsyningsselskaber at fremskynde digitaliseringen, optimere termiske processer og skabe reel forretningsmæssig værdi hurtigt, præcist og gentagne gange.",
+                titlePrefix: "Viden til",
+                titleHighlight: "energiomstillingen",
+                desc: "Udforsk vores samling af tekniske vejledninger, brancherapporter og ekspertindsigter, der er designet til at hjælpe dig med at navigere i fremtidens termiske energi.",
                 teamLead: "Mød teamet bag denne innovation, eller få adgang til vores hvidbøger, tekniske dokumentation og ekspertindsigt herunder."
             },
             collage: {
@@ -1184,16 +1195,30 @@ export const translations = {
             dna: {
                 label: "Vores DNA",
                 title: "Bygget af ingeniører, drevet af formål.",
-                desc: "Hos Noda er nysgerrighed vores motor og bæredygtighed vores kompas. Vi tror på, at de sværeste problemer typisk har de mest eleganta løsninger, hvis man ser dybt nok.",
+                desc: "Hos Noda er nysgerrighed vores motor og bæredygtighed vores kompas. Vi tror på, at de sværeste problemer typisk har de mest elegante løsninger, hvis man ser dybt nok.",
                 items: ["Videnskabelig stringens", "Skandinavisk design", "Global ambition"]
             },
             values: {
-                label: "Værdier",
-                title: "Det, der driver os",
+                label: "Virksomhedsværdier",
+                title: "Kerneværdier",
                 items: [
-                    { title: "Empowerment", desc: "Vi giver vores kunder værktøjerne til at tage kontrol over deres egen energifremtid." },
-                    { title: "Gennemsigtighed", desc: "Vi tror på åbne data og klare resultater, vi kan stå inde for." },
-                    { title: "Innovation", desc: "Vi udfordrer konstant status quo for at finde smartere måder at spare energi på." }
+                    { tag: "#speed", desc: "Bevar smidigheden, den klare kommunikation, den hurtige beslutningstagning og friheden fra en startup, samtidig med at vi demonstrerer evnerne og løsningerne fra en stor virksomhed. Slå hårt, forbliv små." },
+                    { tag: "#ambition", desc: "Vi elsker folk, der sigter mod storhed. De inspirerer og begejstrer deres holdkammerater og hæver barren for os alle. Ambition i massevis!" },
+                    { tag: "#trust", desc: "Vi er store tilhængere af gennemsigtighed og tillid af mange årsager, men den korte version er: det gør livet lettere." },
+                    { tag: "#courage", desc: "Vi er et team af selvstartere og modige pionerer, der sætter en ære i vores arbejde – og det kan ses." },
+                    { tag: "#empathy", desc: "Når vi løfter hinanden op, stræber efter at forstå hinanden og styrker dem omkring os til at trives, gavner det alle." },
+                    { tag: "#togetherness", desc: "Vi arbejder sammen for at bringe vores passioner og ekspertise i spil for at gøre NODA til det bedste, det kan være." }
+                ]
+            },
+            teamList: {
+                label: "Ledelse",
+                title: "Mød Teamet",
+                members: [
+                    { name: "Tatiana Brandt", role: "CEO", desc: "Erfaren virksomhedsleder og tankeleder med omfattande viden inden for digitalisering, innovation og energiindustrin fra Microsoft, Schlumberger og den første norske unicorn." },
+                    { name: "Dr. Christian Johansson", role: "CSPO & Medstifter", desc: "Innovator og iværksætter med med dyb viden inden for termiske netværk, energiarbejdsgange, kunstig intelligens og matematik. NODA-medstifter (2005) og største aktionær." },
+                    { name: "Charlotta Feith", role: "CRO", desc: "Erfaren forretningsudviklingsleder med et usvigeligt engagement i at drive kundesucces og fremme værdien af vores brancheførende Impact-as-a-Service (IaaS) software." },
+                    { name: "Martin Borgquist", role: "COO", desc: "Erfaren leder og domæneekspert inden for energisystemer, automatisering og optimeringsprocesser. Og en forkæmper for kundesucces." },
+                    { name: "Karl-Johan Johnsson", role: "CTO", desc: "Erfaren teknisk leder, der driver vores platforms arkitektur og ingeniørmæssige ekspertise. Ekspert i DevOps og kontinuerlig levering, hvilket sikrer, at vores løsninger er skalerbare, robusta og altid under udvikling." }
                 ]
             },
             team: [

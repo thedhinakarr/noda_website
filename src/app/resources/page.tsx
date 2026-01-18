@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export default function ResourcesPage() {
     const { t } = useLanguage();
@@ -62,22 +63,23 @@ export default function ResourcesPage() {
 
                 <div className="container resources-hero relative z-10 px-6">
                     <div className="max-w-4xl mr-auto text-left">
-                        <p className="text-sm font-medium text-[var(--noda-burgundy)] mb-6 tracking-wide uppercase">{t("resourcesPage.hero.label")}</p>
-                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[var(--noda-text-primary)] mb-8 leading-[0.95] tracking-tight">
-                            {t("resourcesPage.hero.titlePrefix")} <br /> <span className="text-[var(--noda-burgundy)]">{t("resourcesPage.hero.titleHighlight")}</span>
-                        </h1>
-                        <div className="max-w-3xl mt-10 space-y-8">
-                            <p className="text-xl md:text-2xl text-[var(--noda-text-muted)] font-light leading-relaxed">
-                                {t("resourcesPage.hero.desc")}
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                <p className="text-lg text-[var(--noda-text-primary)] font-medium">
-                                    {t("resourcesPage.hero.teamLead")}
+                        <ScrollReveal>
+                            <p className="text-sm font-medium text-[var(--noda-burgundy)] mb-6 tracking-wide uppercase">{t("resourcesPage.hero.label")}</p>
+                            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[var(--noda-text-primary)] mb-8 leading-[0.95] tracking-tight">
+                                {t("resourcesPage.hero.titlePrefix")} <br /> <span className="text-[var(--noda-burgundy)]">{t("resourcesPage.hero.titleHighlight")}</span>
+                            </h1>
+                            <div className="max-w-3xl mt-10 space-y-8">
+                                <p className="text-xl md:text-2xl text-[var(--noda-text-muted)] font-light leading-relaxed">
+                                    {t("resourcesPage.hero.desc")}
                                 </p>
-                            </div>
-                        </div>
 
+                                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                    <p className="text-lg text-[var(--noda-text-primary)] font-medium">
+                                        {t("resourcesPage.hero.teamLead")}
+                                    </p>
+                                </div>
+                            </div>
+                        </ScrollReveal>
                     </div>
                 </div>
             </section>
@@ -85,7 +87,7 @@ export default function ResourcesPage() {
             {/* 2. Collage (Visual Section) */}
             <section className="py-24 overflow-hidden">
                 <div className="container">
-                    <div className="flex flex-col md:grid md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+                    <ScrollReveal className="flex flex-col md:grid md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
                         {/* 1. Main Head Office Image (Large) */}
                         <div className="w-full md:col-span-2 md:row-span-2 relative rounded-sm overflow-hidden group min-h-[300px] md:min-h-0">
                             <Image
@@ -136,14 +138,14 @@ export default function ResourcesPage() {
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
             {/* 3. Culture */}
             <section className="py-24 bg-[var(--noda-bg-secondary)] border-y border-[var(--noda-border-color)]">
                 <div className="container">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                    <ScrollReveal className="grid md:grid-cols-2 gap-16 items-center">
                         <div>
                             <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("resourcesPage.dna.label")}</span>
                             <h2 className="text-h1 text-[var(--noda-text-primary)] mb-6">
@@ -170,7 +172,7 @@ export default function ResourcesPage() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
                         </div>
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
@@ -178,11 +180,13 @@ export default function ResourcesPage() {
             <section className="py-24 bg-[var(--noda-bg-primary)] border-b border-[var(--noda-border-color)]">
                 <div className="container">
                     <div className="text-center mb-16">
-                        <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("resourcesPage.values.label")}</span>
-                        <h2 className="text-h1 text-[var(--noda-text-primary)]">{t("resourcesPage.values.title")}</h2>
+                        <ScrollReveal>
+                            <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("resourcesPage.values.label")}</span>
+                            <h2 className="text-h1 text-[var(--noda-text-primary)]">{t("resourcesPage.values.title")}</h2>
+                        </ScrollReveal>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+                    <ScrollReveal className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16" stagger={0.1}>
                         {(t("resourcesPage.values.items") as any[]).map((value, i) => (
                             <div key={i} className="group">
                                 <h3 className="text-2xl font-mono text-[var(--noda-burgundy)] mb-4">
@@ -193,7 +197,7 @@ export default function ResourcesPage() {
                                 </p>
                             </div>
                         ))}
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
@@ -201,11 +205,13 @@ export default function ResourcesPage() {
             <section className="py-24 bg-[var(--noda-bg-primary)]">
                 <div className="container">
                     <div className="text-center mb-20">
-                        <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("resourcesPage.teamList.label")}</span>
-                        <h2 className="text-h1 text-[var(--noda-text-primary)]">{t("resourcesPage.teamList.title")}</h2>
+                        <ScrollReveal>
+                            <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("resourcesPage.teamList.label")}</span>
+                            <h2 className="text-h1 text-[var(--noda-text-primary)]">{t("resourcesPage.teamList.title")}</h2>
+                        </ScrollReveal>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-x-8 gap-y-16">
+                    <ScrollReveal className="flex flex-wrap justify-center gap-x-8 gap-y-16" stagger={0.15}>
                         {(t("resourcesPage.teamList.members") as any[]).map((member, i) => {
                             const images = [
                                 "/images/resources/tatiana.jpg",
@@ -247,7 +253,7 @@ export default function ResourcesPage() {
                                 </div>
                             );
                         })}
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
@@ -255,19 +261,21 @@ export default function ResourcesPage() {
             {/* 5. Other Resources (Downloads/Docs) */}
             <section className="py-24 bg-[var(--noda-bg-secondary)] border-t border-[var(--noda-border-color)]" >
                 <div className="container">
-                    <h2 className="text-h1 text-[var(--noda-text-primary)] mb-12">Resources & Downloads</h2>
-                    <div className="grid md:grid-cols-3 gap-6">
+                    <ScrollReveal>
+                        <h2 className="text-h1 text-[var(--noda-text-primary)] mb-12">Resources & Downloads</h2>
+                    </ScrollReveal>
+                    <ScrollReveal className="grid md:grid-cols-3 gap-6" stagger={0.1}>
                         {resources.map((resource, i) => (
                             <ResourceCard key={i} {...resource} />
                         ))}
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
             {/* Contact Section - Premium Swiss Layout */}
             <section id="contact" className="contact-section py-32 bg-[var(--noda-bg-primary)] border-t border-[var(--noda-border-color)]">
                 <div className="container">
-                    <div className="grid lg:grid-cols-12 gap-16">
+                    <ScrollReveal className="grid lg:grid-cols-12 gap-16">
                         {/* Left: Heading */}
                         <div className="lg:col-span-5">
                             <h2 className="text-5xl sm:text-6xl md:text-7xl font-medium text-[var(--noda-text-primary)] mb-8 leading-[0.9]">
@@ -336,7 +344,7 @@ export default function ResourcesPage() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 

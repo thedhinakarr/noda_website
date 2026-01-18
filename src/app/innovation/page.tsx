@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export default function InnovationPage() {
     const { t } = useLanguage();
@@ -76,14 +77,16 @@ export default function InnovationPage() {
 
                 <div className="container relative z-10 px-6">
                     <div className="max-w-4xl mr-auto text-left">
-                        <p className="text-sm font-medium text-[var(--noda-burgundy)] mb-6 tracking-wide uppercase">{t("innovationPage.hero.label")}</p>
-                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[var(--noda-text-primary)] mb-8 leading-[0.95] tracking-tight">
-                            {t("innovationPage.hero.titlePrefix")} <br />
-                            <span className="text-[var(--noda-burgundy)]">{t("innovationPage.hero.titleHighlight")}</span>
-                        </h1>
-                        <p className="text-xl md:text-2xl text-[var(--noda-text-muted)] max-w-xl mt-10 leading-relaxed font-light">
-                            {t("innovationPage.hero.desc")}
-                        </p>
+                        <ScrollReveal>
+                            <p className="text-sm font-medium text-[var(--noda-burgundy)] mb-6 tracking-wide uppercase">{t("innovationPage.hero.label")}</p>
+                            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[var(--noda-text-primary)] mb-8 leading-[0.95] tracking-tight">
+                                {t("innovationPage.hero.titlePrefix")} <br />
+                                <span className="text-[var(--noda-burgundy)]">{t("innovationPage.hero.titleHighlight")}</span>
+                            </h1>
+                            <p className="text-xl md:text-2xl text-[var(--noda-text-muted)] max-w-xl mt-10 leading-relaxed font-light">
+                                {t("innovationPage.hero.desc")}
+                            </p>
+                        </ScrollReveal>
                     </div>
                 </div>
             </section>
@@ -91,13 +94,15 @@ export default function InnovationPage() {
             {/* 2. Forefront of Innovation */}
             <section className="py-24 bg-[var(--noda-bg-primary)]">
                 <div className="container text-center max-w-4xl">
-                    <span className="text-label text-[var(--noda-burgundy)] mb-6 block">{t("innovationPage.position.label")}</span>
-                    <h2 className="text-4xl md:text-5xl font-light text-[var(--noda-text-primary)] leading-tight mb-8">
-                        {t("innovationPage.position.title").split("thermal AI")[0]}<span className="gradient-text">thermal AI</span>{t("innovationPage.position.title").split("thermal AI")[1]}
-                    </h2>
-                    <p className="text-body-lg text-[var(--noda-text-muted)] max-w-3xl mx-auto">
-                        {t("innovationPage.position.desc")}
-                    </p>
+                    <ScrollReveal>
+                        <span className="text-label text-[var(--noda-burgundy)] mb-6 block">{t("innovationPage.position.label")}</span>
+                        <h2 className="text-4xl md:text-5xl font-light text-[var(--noda-text-primary)] leading-tight mb-8">
+                            {t("innovationPage.position.title").split("thermal AI")[0]}<span className="gradient-text">thermal AI</span>{t("innovationPage.position.title").split("thermal AI")[1]}
+                        </h2>
+                        <p className="text-body-lg text-[var(--noda-text-muted)] max-w-3xl mx-auto">
+                            {t("innovationPage.position.desc")}
+                        </p>
+                    </ScrollReveal>
                 </div>
             </section>
 
@@ -105,11 +110,13 @@ export default function InnovationPage() {
             <section className="py-24 bg-[var(--noda-bg-surface)]">
                 <div className="container">
                     <div className="mb-16">
-                        <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("innovationPage.projects.label")}</span>
-                        <h2 className="text-h1 text-[var(--noda-text-primary)]">{t("innovationPage.projects.title")}</h2>
+                        <ScrollReveal>
+                            <span className="text-label text-[var(--noda-burgundy)] mb-4 block">{t("innovationPage.projects.label")}</span>
+                            <h2 className="text-h1 text-[var(--noda-text-primary)]">{t("innovationPage.projects.title")}</h2>
+                        </ScrollReveal>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <ScrollReveal className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" stagger={0.1}>
                         {projects.map((project, i) => (
                             <div key={i} className="group flex flex-col p-8 border border-[var(--noda-border-color)] bg-[var(--noda-bg-surface)] hover:border-[var(--noda-burgundy)] transition-colors duration-300">
                                 <span className="text-xs uppercase tracking-widest text-[var(--noda-burgundy)] mb-4 font-mono truncate">
@@ -133,7 +140,7 @@ export default function InnovationPage() {
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
@@ -143,7 +150,7 @@ export default function InnovationPage() {
                     <p className="text-label text-[var(--noda-burgundy)] mb-4">{t("innovationPage.featuredExperts.label")}</p>
                     <h2 className="text-h1 text-[var(--noda-text-primary)] mb-12">{t("innovationPage.featuredExperts.title")}</h2>
 
-                    <div className="grid md:grid-cols-3 gap-6">
+                    <ScrollReveal className="grid md:grid-cols-3 gap-6" stagger={0.2}>
                         {(t("innovationPage.featuredExperts.experts") as any[]).map((expert, i) => (
                             <div key={i} className="group relative aspect-[3/4] overflow-hidden bg-[var(--noda-gray-200)]">
                                 {/* Image */}
@@ -165,7 +172,7 @@ export default function InnovationPage() {
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
@@ -173,7 +180,7 @@ export default function InnovationPage() {
             <section className="py-24 bg-[var(--noda-bg-secondary)]">
                 <div className="container">
                     <h2 className="text-h1 text-[var(--noda-text-primary)] text-center mb-16">{t("innovationPage.values.title")}</h2>
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <ScrollReveal className="grid md:grid-cols-3 gap-8" stagger={0.15}>
                         {goals.map((goal, i) => (
                             <div key={i} className="group relative p-8 border border-[var(--noda-border-color)] bg-[var(--noda-bg-surface)] hover:border-[var(--noda-burgundy)]/50 transition-all duration-300 flex flex-col h-full rounded-none">
                                 <div className="mb-6 text-[var(--noda-burgundy)] group-hover:scale-110 transition-transform duration-300">
@@ -189,7 +196,7 @@ export default function InnovationPage() {
                                 </p>
                             </div>
                         ))}
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
