@@ -43,7 +43,7 @@ export function PatentedSoftware() {
                 </div>
 
                 {/* Image Carousel */}
-                <div className="mx-auto px-12 relative">
+                <div className="mx-auto px-4 md:px-12 relative">
                     <Carousel
                         opts={{
                             align: "start",
