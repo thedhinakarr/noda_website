@@ -19,11 +19,11 @@ export function ApplicationAreas() {
     const areas = Array.isArray(translatedItems) ? translatedItems.map((item, i) => ({
         ...item,
         image: [
-            "/images/success/district heating company-1.jpeg", // District Heating
-            "/images/success/commercial real estate-1.jpeg",   // Building Clusters
-            "/images/success/industrial infrastructure-3.jpeg", // Energy Providers
-            "/images/success/manufacturing sector-3.jpeg"       // Industrial Entities
-        ][i] || "/images/success/district heating company-1.jpeg"
+            "/images/success/district-heating.jpeg", // District Heating
+            "/images/success/commercial-real-estate.jpeg",   // Building Clusters
+            "/images/success/industrial-infrastructure.jpeg", // Energy Providers
+            "/images/success/manufacturing-sector.jpeg"       // Industrial Entities
+        ][i] || "/images/success/district-heating.jpeg"
     })) : [];
 
     return (

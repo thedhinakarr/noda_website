@@ -95,7 +95,7 @@ export default function ProductPage() {
                                 <div className="flex flex-row items-center justify-center gap-6 md:gap-16 w-full px-2">
                                     <div className="relative w-32 h-32 md:w-48 md:h-48 transition-transform duration-500 transform group-hover:scale-105 drop-shadow-2xl">
                                         <Image
-                                            src="/images/product/Achilles Network Stamp Member.jpg"
+                                            src="/images/product/achilles-network-stamp.jpg"
                                             alt={t("productPage.impactService.stamps.achilles")}
                                             fill
                                             sizes="(max-width: 768px) 128px, 192px"
@@ -104,7 +104,7 @@ export default function ProductPage() {
                                     </div>
                                     <div className="relative w-32 h-32 md:w-48 md:h-48 transition-transform duration-500 transform group-hover:scale-105 drop-shadow-2xl">
                                         <Image
-                                            src="/images/product/AC0815 UNCE Stamp SILVER PLUS CMYK.jpg"
+                                            src="/images/product/unce-stamp-silver-plus.jpg"
                                             alt={t("productPage.impactService.stamps.unce")}
                                             fill
                                             sizes="(max-width: 768px) 128px, 192px"
@@ -201,7 +201,7 @@ export default function ProductPage() {
                                 </div>
                             </div>
                             <Image
-                                src="/images/product/Snip 2025-04-06 22.47.14.png"
+                                src="/images/product/vast-value-chart.png"
                                 alt={t("productPage.vastValue.title")}
                                 fill
                                 className="object-contain bg-white"
@@ -227,7 +227,7 @@ export default function ProductPage() {
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     <Image
-                                        src="/images/product/Snip 2025-04-06 22.47.14.png"
+                                        src="/images/product/vast-value-chart.png"
                                         alt={t("productPage.vastValue.title")}
                                         fill
                                         className="object-contain"

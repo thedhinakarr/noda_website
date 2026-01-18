@@ -14,17 +14,17 @@ import {
 export function PatentedSoftware() {
     const { t } = useLanguage();
     const images = [
-        "/images/home/Active demand response.png",
-        "/images/home/SSM - Supply Side Management.png",
-        "/images/home/Screenshot (looker 5).png",
-        "/images/home/Skärmavbild 2022-04-29 kl. 21.39.48.png",
-        "/images/home/Skärmavbild 2022-04-29 kl. 21.41.30.png",
-        "/images/home/Skärmavbild 2022-04-29 kl. 21.42.45.png",
-        "/images/home/Skärmavbild 2022-04-29 kl. 21.48.15 (1).png",
-        "/images/home/Skärmavbild 2022-04-29 kl. 21.50.24.png",
-        "/images/home/Skärmavbild 2022-04-29 kl. 21.55.06.png",
-        "/images/home/Snip 2025-03-23 00.36.09.png",
-        "/images/home/e6b47c25-568d-43ee-b01c-942fb6bd8b74-WithExpWithoutDaily.png"
+        "/images/home/active-demand-response.png",
+        "/images/home/ssm-supply-side-management.png",
+        "/images/home/screenshot-looker-5.png",
+        "/images/home/screenshot-energy-chart-1.png",
+        "/images/home/screenshot-energy-chart-2.png",
+        "/images/home/screenshot-energy-chart-3.png",
+        "/images/home/screenshot-energy-chart-4.png",
+        "/images/home/screenshot-energy-chart-5.png",
+        "/images/home/screenshot-energy-chart-6.png",
+        "/images/home/snip-energy-graph.png",
+        "/images/home/energy-graph-comparison.png"
     ];
 
     return (

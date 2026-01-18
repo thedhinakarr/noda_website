@@ -7,24 +7,24 @@ import { useLanguage } from "@/context/LanguageContext";
 export function PartnersMarquee() {
     const { t } = useLanguage();
     const partners = [
-        "/images/home/brand_carousel/1200px-Veolia_logo.svg.webp",
-        "/images/home/brand_carousel/Daimler_Truck_Logo.svg.webp",
-        "/images/home/brand_carousel/EcoPilot-Logo-Colour-large.webp",
-        "/images/home/brand_carousel/Logo-engie.svg (1).webp",
-        "/images/home/brand_carousel/SH_logo_new_Logo_SH_orange_new-1-kopia.webp",
-        "/images/home/brand_carousel/Siemens-logo.svg.webp",
-        "/images/home/brand_carousel/bravida_logo_rgb_white_blue (1).webp",
-        "/images/home/brand_carousel/umeå_energi-300x212.webp",
+        "/images/home/brand_carousel/veolia.webp",
+        "/images/home/brand_carousel/daimler-truck.webp",
+        "/images/home/brand_carousel/ecopilot.webp",
+        "/images/home/brand_carousel/engie.webp",
+        "/images/home/brand_carousel/sh-energy.webp",
+        "/images/home/brand_carousel/siemens.webp",
+        "/images/home/brand_carousel/bravida.webp",
+        "/images/home/brand_carousel/umea-energi.webp",
         // Including others generic named ones - assuming they are valid logos
-        "/images/home/brand_carousel/images (1)-1.webp",
-        "/images/home/brand_carousel/images (1).webp",
-        "/images/home/brand_carousel/images (2).webp",
-        "/images/home/brand_carousel/images (3).webp",
-        "/images/home/brand_carousel/images-1.webp",
-        "/images/home/brand_carousel/images.webp",
-        "/images/home/brand_carousel/logo.webp",
-        "/images/home/brand_carousel/logotype.webp",
-        "/images/home/brand_carousel/unnamed.webp"
+        "/images/home/brand_carousel/partner-generic-1.webp",
+        "/images/home/brand_carousel/partner-generic-2.webp",
+        "/images/home/brand_carousel/partner-generic-3.webp",
+        "/images/home/brand_carousel/partner-generic-4.webp",
+        "/images/home/brand_carousel/partner-generic-5.webp",
+        "/images/home/brand_carousel/partner-generic-6.webp",
+        "/images/home/brand_carousel/partner-noda.webp",
+        "/images/home/brand_carousel/partner-logotype.webp",
+        "/images/home/brand_carousel/partner-generic-7.webp"
     ];
 
     return (

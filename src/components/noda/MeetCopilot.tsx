@@ -54,7 +54,7 @@ export function MeetCopilot() {
                             {/* Dashboard Content */}
                             <div className="p-6">
                                 {/* Stats Grid */}
-                                <div className="grid grid-cols-3 gap-4 mb-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                                     {/* Stat 1: Efficiency */}
                                     <div className="p-4 rounded-lg bg-[#141414] border border-[var(--noda-border-color)]">
                                         <p className="text-xs text-[var(--noda-text-muted)] mb-1">{t("copilot.metrics.efficiency")}</p>
