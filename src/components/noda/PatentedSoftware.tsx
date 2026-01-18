@@ -59,8 +59,10 @@ export function PatentedSoftware() {
                                             src={src}
                                             alt={`Noda Software Interface ${index + 1}`}
                                             fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            className="object-cover transition-all duration-500 group-hover:scale-105"
                                         />
+                                        {/* Dark overlay to reduce brightness in dark mode - lifts on hover */}
+                                        <div className="absolute inset-0 bg-black/30 dark:bg-black/40 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
                                     </div>
                                 </CarouselItem>
                             ))}

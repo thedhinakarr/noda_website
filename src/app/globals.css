@@ -74,12 +74,12 @@
     --sidebar-ring: 342 70% 38%;
 
     /* ============================================================================
-       NODA DESIGN SYSTEM - Semantic Color Palette (Dark Mode - Zinc Scale)
+       NODA DESIGN SYSTEM - Semantic Color Palette (Dark Mode - Refined)
        ============================================================================ */
 
-    /* Backgrounds - Tailwind Zinc scale for refined dark aesthetic */
+    /* Backgrounds - Elevated Zinc scale with more contrast between levels */
     --noda-bg-primary: #09090B;
-    /* Zinc-950 - Deep, sophisticated */
+    /* Zinc-950 - Deep base */
     --noda-bg-secondary: #18181B;
     /* Zinc-900 - Section alternation */
     --noda-bg-surface: #27272A;
@@ -87,25 +87,27 @@
     --noda-bg-elevated: #3F3F46;
     /* Zinc-700 - Modals, dropdowns */
 
-    /* Text - Refined off-whites for reduced eye strain */
-    --noda-text-primary: #FAFAFA;
-    /* Zinc-50 - Primary content */
+    /* Text - Softer off-whites to reduce eye strain */
+    --noda-text-primary: #E4E4E7;
+    /* Zinc-200 - Softer than pure white */
     --noda-text-secondary: #A1A1AA;
     /* Zinc-400 - Secondary content */
-    --noda-text-muted: #71717A;
-    /* Zinc-500 - Subtle labels */
+    --noda-text-muted: #A1A1AA;
+    /* Zinc-400 - BRIGHTER for better label visibility */
 
-    /* Borders - More visible than before */
-    --noda-border-color: #3F3F46;
-    /* Zinc-700 - Visible but not harsh */
-    --noda-grid-color: #52525B;
-    /* Zinc-600 - Grid lines */
+    /* Borders - Visible definition */
+    --noda-border-color: #52525B;
+    /* Zinc-600 - More visible borders */
+    --noda-grid-color: #71717A;
+    /* Zinc-500 - Visible grid lines */
 
-    /* Accents */
+    /* Accents - Original burgundy, slightly desaturated for dark mode */
     --noda-burgundy: hsl(342, 65%, 42%);
-    /* Slightly desaturated for dark mode */
+    /* Desaturated for dark mode harmony */
     --noda-burgundy-light: hsl(342, 65%, 52%);
+    /* Hover state */
     --noda-burgundy-dark: hsl(342, 65%, 32%);
+    /* Pressed state */
     --noda-accent-dark: hsl(var(--primary));
     --noda-accent-deep: hsl(var(--sidebar-primary));
 
