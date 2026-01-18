@@ -41,42 +41,41 @@ export function MeetCopilot() {
                     {/* Right: Visual - Custom Dashboard UI */}
                     <div className="relative">
                         {/* Dashboard Container - Mac Window Style */}
-                        <div className="relative rounded-xl overflow-hidden border border-[var(--noda-border-color)] bg-[#0A0A0A] shadow-2xl">
+                        <div className="relative rounded-xl overflow-hidden border border-[var(--noda-border-color)] bg-[var(--noda-bg-primary)] shadow-2xl">
                             {/* Window Header */}
-                            <div className="h-12 bg-[#141414] border-b border-[var(--noda-border-color)] flex items-center px-4 gap-2">
+                            <div className="h-12 bg-[var(--noda-bg-surface)] border-b border-[var(--noda-border-color)] flex items-center px-4 gap-2">
                                 <div className="w-3 h-3 rounded-full bg-[#FF5F56]" /> {/* Red */}
                                 <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" /> {/* Yellow */}
                                 <div className="w-3 h-3 rounded-full bg-[#27C93F]" /> {/* Green */}
 
-                                <div className="ml-4 w-32 h-1.5 bg-[#242424] rounded-full" /> {/* Fake URL bar */}
+                                <div className="ml-4 w-32 h-1.5 bg-[var(--noda-border-color)] rounded-full" /> {/* Fake URL bar */}
                             </div>
 
                             {/* Dashboard Content */}
                             <div className="p-6">
                                 {/* Stats Grid */}
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                                    {/* Stat 1: Efficiency */}
-                                    <div className="p-4 rounded-lg bg-[#141414] border border-[var(--noda-border-color)]">
+                                    <div className="p-4 rounded-lg bg-[var(--noda-bg-surface)] border border-[var(--noda-border-color)]">
                                         <p className="text-xs text-[var(--noda-text-muted)] mb-1">{t("copilot.metrics.efficiency")}</p>
-                                        <p className="text-2xl font-normal text-white mb-2">94.2%</p>
-                                        <p className="text-xs font-medium text-[#27C93F]">+2.1%</p>
+                                        <p className="text-2xl font-normal text-[var(--noda-text-primary)] mb-2">94.2%</p>
+                                        <p className="text-xs font-medium text-emerald-400">+2.1%</p>
                                     </div>
                                     {/* Stat 2: Savings */}
-                                    <div className="p-4 rounded-lg bg-[#141414] border border-[var(--noda-border-color)]">
+                                    <div className="p-4 rounded-lg bg-[var(--noda-bg-surface)] border border-[var(--noda-border-color)]">
                                         <p className="text-xs text-[var(--noda-text-muted)] mb-1">{t("copilot.metrics.savings")}</p>
-                                        <p className="text-2xl font-normal text-white mb-2">€24K</p>
-                                        <p className="text-xs font-medium text-[#27C93F]">+12%</p>
+                                        <p className="text-2xl font-normal text-[var(--noda-text-primary)] mb-2">€24K</p>
+                                        <p className="text-xs font-medium text-emerald-400">+12%</p>
                                     </div>
                                     {/* Stat 3: CO2 Cut */}
-                                    <div className="p-4 rounded-lg bg-[#141414] border border-[var(--noda-border-color)]">
+                                    <div className="p-4 rounded-lg bg-[var(--noda-bg-surface)] border border-[var(--noda-border-color)]">
                                         <p className="text-xs text-[var(--noda-text-muted)] mb-1">{t("copilot.metrics.co2")}</p>
-                                        <p className="text-2xl font-normal text-white mb-2">18T</p>
-                                        <p className="text-xs font-medium text-[#27C93F]">+8.4%</p>
+                                        <p className="text-2xl font-normal text-[var(--noda-text-primary)] mb-2">18T</p>
+                                        <p className="text-xs font-medium text-emerald-400">+8.4%</p>
                                     </div>
                                 </div>
 
                                 {/* Chart Area */}
-                                <div className="p-6 rounded-lg bg-[#141414] border border-[var(--noda-border-color)]">
+                                <div className="p-6 rounded-lg bg-[var(--noda-bg-surface)] border border-[var(--noda-border-color)]">
                                     <div className="flex items-end justify-between h-32 gap-2 mt-4">
                                         {/* Bars */}
                                         <div className="w-full bg-[var(--noda-burgundy)] opacity-80 h-[25%] rounded-sm" />
